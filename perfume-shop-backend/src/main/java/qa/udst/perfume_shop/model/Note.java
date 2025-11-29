@@ -14,4 +14,7 @@ public class Note {
     private String id;
 
     private String name; // e.g., "Bergamot", "Vanilla", "Sandalwood"
+
+    private String photo; // URL or file path to your note image
+
 }

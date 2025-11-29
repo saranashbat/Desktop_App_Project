@@ -1,0 +1,16 @@
+[
+  {
+    "username": "sara_nashbat",
+    "email": "saranashbat@gmail.com",
+    "imagePath": "/images/users/sara.jpg",
+    "passwordHash": "123pass",
+    "defaultAddress": "345 Jassim St, Doha, Qatar"
+  },
+  {
+    "username": "matthew",
+    "email": "matthew@example.com",
+    "imagePath": "/images/users/matthew.jpg",
+    "passwordHash": "123pass",
+    "defaultAddress": "876 Water St, Tampa, Florida"
+  }
+]

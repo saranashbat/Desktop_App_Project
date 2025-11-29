@@ -1,0 +1,734 @@
+[
+  {
+    "name": "Lost Cherry",
+    "brand": "Tom Ford",
+    "price": 250.0,
+    "imagePath": "/images/perfumes/lost_cherry.jpg",
+    "description": "A sweet and dark cherry fragrance with hints of almond and Turkish rose.",
+    "notes": [
+      {"note": {"name": "Bitter Cherry", "imagePath": "/images/notes/bitter_cherry.jpg"}, "type": "TOP"},
+      {"note": {"name": "Tonka Bean", "imagePath": "/images/notes/tonka_bean.jpg"}, "type": "BASE"},
+      {"note": {"name": "Almond", "imagePath": "/images/notes/almond.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Rose Prick",
+    "brand": "Tom Ford",
+    "price": 240.0,
+    "imagePath": "/images/perfumes/rose_prick.jpg",
+    "description": "A bold floral fragrance combining Turkish rose and patchouli with a spicy twist.",
+    "notes": [
+      {"note": {"name": "Turkish Rose", "imagePath": "/images/notes/turkish_rose.jpg"}, "type": "TOP"},
+      {"note": {"name": "Patchouli", "imagePath": "/images/notes/patchouli.jpg"}, "type": "BASE"},
+      {"note": {"name": "Spice", "imagePath": "/images/notes/spice.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Black Orchid",
+    "brand": "Tom Ford",
+    "price": 220.0,
+    "imagePath": "/images/perfumes/black_orchid.jpg",
+    "description": "A luxurious and sensual fragrance with dark floral and chocolatey notes.",
+    "notes": [
+      {"note": {"name": "Black Truffle", "imagePath": "/images/notes/black_truffle.jpg"}, "type": "TOP"},
+      {"note": {"name": "Patchouli", "imagePath": "/images/notes/patchouli.jpg"}, "type": "BASE"},
+      {"note": {"name": "Orchid", "imagePath": "/images/notes/orchid.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Neroli Portofino",
+    "brand": "Tom Ford",
+    "price": 210.0,
+    "imagePath": "/images/perfumes/neroli_portofino.jpg",
+    "description": "A fresh and vibrant citrus fragrance inspired by the Italian Riviera.",
+    "notes": [
+      {"note": {"name": "Bergamot", "imagePath": "/images/notes/bergamot.jpg"}, "type": "TOP"},
+      {"note": {"name": "Amber", "imagePath": "/images/notes/amber.jpg"}, "type": "BASE"},
+      {"note": {"name": "Neroli", "imagePath": "/images/notes/neroli.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Tobacco Vanille",
+    "brand": "Tom Ford",
+    "price": 230.0,
+    "imagePath": "/images/perfumes/tobacco_vanille.jpg",
+    "description": "A warm and spicy gourmand fragrance combining tobacco, vanilla, and dried fruits.",
+    "notes": [
+      {"note": {"name": "Tobacco Leaf", "imagePath": "/images/notes/tobacco_leaf.jpg"}, "type": "TOP"},
+      {"note": {"name": "Vanilla", "imagePath": "/images/notes/vanilla.jpg"}, "type": "BASE"},
+      {"note": {"name": "Dried Fruits", "imagePath": "/images/notes/dried_fruits.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Soleil Blanc",
+    "brand": "Tom Ford",
+    "price": 215.0,
+    "imagePath": "/images/perfumes/soleil_blanc.jpg",
+    "description": "A radiant and sun-soaked fragrance with white florals and warm amber notes.",
+    "notes": [
+      {"note": {"name": "Bergamot", "imagePath": "/images/notes/bergamot.jpg"}, "type": "TOP"},
+      {"note": {"name": "Amber", "imagePath": "/images/notes/amber.jpg"}, "type": "BASE"},
+      {"note": {"name": "White Flowers", "imagePath": "/images/notes/white_flowers.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Tuscan Leather",
+    "brand": "Tom Ford",
+    "price": 260.0,
+    "imagePath": "/images/perfumes/tuscan_leather.jpg",
+    "description": "A rich leather fragrance accented with raspberry and saffron for a bold signature scent.",
+    "notes": [
+      {"note": {"name": "Leather", "imagePath": "/images/notes/leather.jpg"}, "type": "TOP"},
+      {"note": {"name": "Saffron", "imagePath": "/images/notes/saffron.jpg"}, "type": "BASE"},
+      {"note": {"name": "Raspberry", "imagePath": "/images/notes/raspberry.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Café Rose",
+    "brand": "Tom Ford",
+    "price": 220.0,
+    "imagePath": "/images/perfumes/cafe_rose.jpg",
+    "description": "A sophisticated floral-oriental fragrance blending coffee, rose, and amber notes.",
+    "notes": [
+      {"note": {"name": "Coffee", "imagePath": "/images/notes/coffee.jpg"}, "type": "TOP"},
+      {"note": {"name": "Amber", "imagePath": "/images/notes/amber.jpg"}, "type": "BASE"},
+      {"note": {"name": "Rose", "imagePath": "/images/notes/rose.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Santal Blush",
+    "brand": "Tom Ford",
+    "price": 210.0,
+    "imagePath": "/images/perfumes/santal_blush.jpg",
+    "description": "A delicate and warm fragrance with soft spices and creamy sandalwood.",
+    "notes": [
+      {"note": {"name": "Sandalwood", "imagePath": "/images/notes/sandalwood.jpg"}, "type": "TOP"},
+      {"note": {"name": "Spices", "imagePath": "/images/notes/spices.jpg"}, "type": "BASE"},
+      {"note": {"name": "Floral Accord", "imagePath": "/images/notes/floral_accord.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Grey Vetiver",
+    "brand": "Tom Ford",
+    "price": 205.0,
+    "imagePath": "/images/perfumes/grey_vetiver.jpg",
+    "description": "A clean and crisp vetiver fragrance with notes of citrus and earthy undertones.",
+    "notes": [
+      {"note": {"name": "Vetiver", "imagePath": "/images/notes/vetiver.jpg"}, "type": "TOP"},
+      {"note": {"name": "Cedarwood", "imagePath": "/images/notes/cedarwood.jpg"}, "type": "BASE"},
+      {"note": {"name": "Grapefruit", "imagePath": "/images/notes/grapefruit.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Vanille Fatale",
+    "brand": "Tom Ford",
+    "price": 225.0,
+    "imagePath": "/images/perfumes/vanille_fatale.jpg",
+    "description": "A dark and sultry vanilla fragrance with smoky and spicy accords.",
+    "notes": [
+      {"note": {"name": "Vanilla", "imagePath": "/images/notes/vanilla.jpg"}, "type": "TOP"},
+      {"note": {"name": "Incense", "imagePath": "/images/notes/incense.jpg"}, "type": "BASE"},
+      {"note": {"name": "Spice", "imagePath": "/images/notes/spice.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "The Tragedy of Lord George",
+    "brand": "Penhaligon’s",
+    "price": 230.0,
+    "imagePath": "/images/perfumes/the_tragedy_of_lord_george.jpg",
+    "description": "A classic, refined fragrance with hints of citrus, spice, and warm woods.",
+    "notes": [
+      {"note": {"name": "Bergamot", "imagePath": "/images/notes/bergamot.jpg"}, "type": "TOP"},
+      {"note": {"name": "Amber", "imagePath": "/images/notes/amber.jpg"}, "type": "BASE"},
+      {"note": {"name": "Cedarwood", "imagePath": "/images/notes/cedarwood.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "The Revenge of Lady Blanche",
+    "brand": "Penhaligon’s",
+    "price": 220.0,
+    "imagePath": "/images/perfumes/the_revenge_of_lady_blanche.jpg",
+    "description": "A floral and fruity fragrance with a sophisticated, mysterious undertone.",
+    "notes": [
+      {"note": {"name": "Rose", "imagePath": "/images/notes/rose.jpg"}, "type": "TOP"},
+      {"note": {"name": "Musk", "imagePath": "/images/notes/musk.jpg"}, "type": "BASE"},
+      {"note": {"name": "Blackcurrant", "imagePath": "/images/notes/blackcurrant.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "The Blazing Mr Sam",
+    "brand": "Penhaligon’s",
+    "price": 225.0,
+    "imagePath": "/images/perfumes/the_blazing_mr_sam.jpg",
+    "description": "A spicy and warm fragrance with hints of leather and aromatic woods.",
+    "notes": [
+      {"note": {"name": "Cinnamon", "imagePath": "/images/notes/cinnamon.jpg"}, "type": "TOP"},
+      {"note": {"name": "Leather", "imagePath": "/images/notes/leather.jpg"}, "type": "BASE"},
+      {"note": {"name": "Clove", "imagePath": "/images/notes/clove.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "The Coveted Duchess Rose",
+    "brand": "Penhaligon’s",
+    "price": 210.0,
+    "imagePath": "/images/perfumes/the_coveted_duchess_rose.jpg",
+    "description": "A romantic and elegant rose fragrance with soft fruity and musky undertones.",
+    "notes": [
+      {"note": {"name": "Rose", "imagePath": "/images/notes/rose.jpg"}, "type": "TOP"},
+      {"note": {"name": "Musk", "imagePath": "/images/notes/musk.jpg"}, "type": "BASE"},
+      {"note": {"name": "Lychee", "imagePath": "/images/notes/lychee.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "The Inimitable William Penhaligon",
+    "brand": "Penhaligon’s",
+    "price": 240.0,
+    "imagePath": "/images/perfumes/the_inimitable_william_penhaligon.jpg",
+    "description": "A distinguished fragrance blending citrus, floral, and woody notes.",
+    "notes": [
+      {"note": {"name": "Orange Blossom", "imagePath": "/images/notes/orange_blossom.jpg"}, "type": "TOP"},
+      {"note": {"name": "Sandalwood", "imagePath": "/images/notes/sandalwood.jpg"}, "type": "BASE"},
+      {"note": {"name": "Jasmine", "imagePath": "/images/notes/jasmine.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Clandestine Clara",
+    "brand": "Penhaligon’s",
+    "price": 220.0,
+    "imagePath": "/images/perfumes/clandestine_clara.jpg",
+    "description": "A mysterious and feminine fragrance with floral, spicy, and musky notes.",
+    "notes": [
+      {"note": {"name": "Violet", "imagePath": "/images/notes/violet.jpg"}, "type": "TOP"},
+      {"note": {"name": "Musk", "imagePath": "/images/notes/musk.jpg"}, "type": "BASE"},
+      {"note": {"name": "Cardamom", "imagePath": "/images/notes/cardamom.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "The Uncompromising Sohan",
+    "brand": "Penhaligon’s",
+    "price": 235.0,
+    "imagePath": "/images/perfumes/the_uncompromising_sohan.jpg",
+    "description": "A spicy oriental fragrance with caramel, saffron, and amber undertones.",
+    "notes": [
+      {"note": {"name": "Saffron", "imagePath": "/images/notes/saffron.jpg"}, "type": "TOP"},
+      {"note": {"name": "Amber", "imagePath": "/images/notes/amber.jpg"}, "type": "BASE"},
+      {"note": {"name": "Caramel", "imagePath": "/images/notes/caramel.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "The Bewitching Yasmine",
+    "brand": "Penhaligon’s",
+    "price": 215.0,
+    "imagePath": "/images/perfumes/the_bewitching_yasmine.jpg",
+    "description": "A captivating floral fragrance featuring jasmine, rose, and warm woods.",
+    "notes": [
+      {"note": {"name": "Jasmine", "imagePath": "/images/notes/jasmine.jpg"}, "type": "TOP"},
+      {"note": {"name": "Sandalwood", "imagePath": "/images/notes/sandalwood.jpg"}, "type": "BASE"},
+      {"note": {"name": "Rose", "imagePath": "/images/notes/rose.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "The Omniscient Mr Thompson",
+    "brand": "Penhaligon’s",
+    "price": 225.0,
+    "imagePath": "/images/perfumes/the_omniscient_mr_thompson.jpg",
+    "description": "A sophisticated woody aromatic fragrance with hints of citrus and spices.",
+    "notes": [
+      {"note": {"name": "Lemon", "imagePath": "/images/notes/lemon.jpg"}, "type": "TOP"},
+      {"note": {"name": "Cedarwood", "imagePath": "/images/notes/cedarwood.jpg"}, "type": "BASE"},
+      {"note": {"name": "Clove", "imagePath": "/images/notes/clove.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "The World According to Arthur",
+    "brand": "Penhaligon’s",
+    "price": 220.0,
+    "imagePath": "/images/perfumes/the_world_according_to_arthur.jpg",
+    "description": "A refined and classic fragrance blending citrus, leather, and floral notes.",
+    "notes": [
+      {"note": {"name": "Bergamot", "imagePath": "/images/notes/bergamot.jpg"}, "type": "TOP"},
+      {"note": {"name": "Leather", "imagePath": "/images/notes/leather.jpg"}, "type": "BASE"},
+      {"note": {"name": "Iris", "imagePath": "/images/notes/iris.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Vanilla 28",
+    "brand": "Kay Ali",
+    "price": 120.0,
+    "imagePath": "/images/perfumes/vanilla_28.jpg",
+    "description": "A warm and creamy vanilla fragrance with hints of caramel and soft florals.",
+    "notes": [
+      {"note": {"name": "Vanilla", "imagePath": "/images/notes/vanilla.jpg"}, "type": "TOP"},
+      {"note": {"name": "Caramel", "imagePath": "/images/notes/caramel.jpg"}, "type": "BASE"},
+      {"note": {"name": "Jasmine", "imagePath": "/images/notes/jasmine.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Musk 12",
+    "brand": "Kay Ali",
+    "price": 115.0,
+    "imagePath": "/images/perfumes/musk_12.jpg",
+    "description": "A soft and sensual fragrance with clean musky undertones and a touch of floral sweetness.",
+    "notes": [
+      {"note": {"name": "White Musk", "imagePath": "/images/notes/white_musk.jpg"}, "type": "TOP"},
+      {"note": {"name": "Amber", "imagePath": "/images/notes/amber.jpg"}, "type": "BASE"},
+      {"note": {"name": "Rose", "imagePath": "/images/notes/rose.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Elixir 11",
+    "brand": "Kay Ali",
+    "price": 125.0,
+    "imagePath": "/images/perfumes/elixir_11.jpg",
+    "description": "A luxurious and rich fragrance with a blend of fruits, florals, and subtle spices.",
+    "notes": [
+      {"note": {"name": "Bergamot", "imagePath": "/images/notes/bergamot.jpg"}, "type": "TOP"},
+      {"note": {"name": "Sandalwood", "imagePath": "/images/notes/sandalwood.jpg"}, "type": "BASE"},
+      {"note": {"name": "Peach", "imagePath": "/images/notes/peach.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Vanilla Candy Rock Sugar 42",
+    "brand": "Kay Ali",
+    "price": 130.0,
+    "imagePath": "/images/perfumes/vanilla_candy_rock_sugar_42.jpg",
+    "description": "A sweet gourmand fragrance with vanilla, sugar, and creamy caramel notes.",
+    "notes": [
+      {"note": {"name": "Vanilla", "imagePath": "/images/notes/vanilla.jpg"}, "type": "TOP"},
+      {"note": {"name": "Sugar", "imagePath": "/images/notes/sugar.jpg"}, "type": "BASE"},
+      {"note": {"name": "Caramel", "imagePath": "/images/notes/caramel.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Eden Juicy Apple 01",
+    "brand": "Kay Ali",
+    "price": 110.0,
+    "imagePath": "/images/perfumes/eden_juicy_apple_01.jpg",
+    "description": "A fresh and fruity fragrance bursting with crisp apple and soft floral notes.",
+    "notes": [
+      {"note": {"name": "Apple", "imagePath": "/images/notes/apple.jpg"}, "type": "TOP"},
+      {"note": {"name": "Musk", "imagePath": "/images/notes/musk.jpg"}, "type": "BASE"},
+      {"note": {"name": "Peony", "imagePath": "/images/notes/peony.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Yum Pistachio Gelato 33",
+    "brand": "Kay Ali",
+    "price": 120.0,
+    "imagePath": "/images/perfumes/yum_pistachio_gelato_33.jpg",
+    "description": "A sweet and creamy dessert-inspired fragrance with pistachio, vanilla, and almond notes.",
+    "notes": [
+      {"note": {"name": "Pistachio", "imagePath": "/images/notes/pistachio.jpg"}, "type": "TOP"},
+      {"note": {"name": "Vanilla", "imagePath": "/images/notes/vanilla.jpg"}, "type": "BASE"},
+      {"note": {"name": "Almond", "imagePath": "/images/notes/almond.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Utopia Vanilla Coco 21",
+    "brand": "Kay Ali",
+    "price": 125.0,
+    "imagePath": "/images/perfumes/utopia_vanilla_coco_21.jpg",
+    "description": "A tropical and creamy vanilla fragrance enriched with coconut and sweet undertones.",
+    "notes": [
+      {"note": {"name": "Vanilla", "imagePath": "/images/notes/vanilla.jpg"}, "type": "TOP"},
+      {"note": {"name": "Coconut", "imagePath": "/images/notes/coconut.jpg"}, "type": "BASE"},
+      {"note": {"name": "Cream Accord", "imagePath": "/images/notes/cream_accord.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Maldives in a Bottle Ylang Coco 20",
+    "brand": "Kay Ali",
+    "price": 130.0,
+    "imagePath": "/images/perfumes/maldives_in_a_bottle_ylang_coco_20.jpg",
+    "description": "A tropical floral fragrance combining ylang-ylang, coconut, and sun-soaked notes.",
+    "notes": [
+      {"note": {"name": "Ylang-Ylang", "imagePath": "/images/notes/ylang_ylang.jpg"}, "type": "TOP"},
+      {"note": {"name": "Coconut", "imagePath": "/images/notes/coconut.jpg"}, "type": "BASE"},
+      {"note": {"name": "Jasmine", "imagePath": "/images/notes/jasmine.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Fleur Majesty Rose Royale 31",
+    "brand": "Kay Ali",
+    "price": 120.0,
+    "imagePath": "/images/perfumes/fleur_majesty_rose_royale_31.jpg",
+    "description": "An elegant floral fragrance centered around rich roses and soft creamy undertones.",
+    "notes": [
+      {"note": {"name": "Rose", "imagePath": "/images/notes/rose.jpg"}, "type": "TOP"},
+      {"note": {"name": "Musk", "imagePath": "/images/notes/musk.jpg"}, "type": "BASE"},
+      {"note": {"name": "Peony", "imagePath": "/images/notes/peony.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Capri in a Bottle Lemon Sugar 14",
+    "brand": "Kay Ali",
+    "price": 115.0,
+    "imagePath": "/images/perfumes/capri_in_a_bottle_lemon_sugar_14.jpg",
+    "description": "A bright and zesty fragrance combining fresh lemons with a touch of sweetness.",
+    "notes": [
+      {"note": {"name": "Lemon", "imagePath": "/images/notes/lemon.jpg"}, "type": "TOP"},
+      {"note": {"name": "Sugar", "imagePath": "/images/notes/sugar.jpg"}, "type": "BASE"},
+      {"note": {"name": "Orange Blossom", "imagePath": "/images/notes/orange_blossom.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Aventus",
+    "brand": "Creed",
+    "price": 320.0,
+    "imagePath": "/images/perfumes/aventus.jpg",
+    "description": "A bold and fruity fragrance with pineapple, bergamot, and smoky undertones.",
+    "notes": [
+      {"note": {"name": "Pineapple", "imagePath": "/images/notes/pineapple.jpg"}, "type": "TOP"},
+      {"note": {"name": "Musk", "imagePath": "/images/notes/musk.jpg"}, "type": "BASE"},
+      {"note": {"name": "Bergamot", "imagePath": "/images/notes/bergamot.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Green Irish Tweed",
+    "brand": "Creed",
+    "price": 280.0,
+    "imagePath": "/images/perfumes/green_irish_tweed.jpg",
+    "description": "A fresh, green, and elegant fragrance with iris, violet leaves, and sandalwood.",
+    "notes": [
+      {"note": {"name": "Iris", "imagePath": "/images/notes/iris.jpg"}, "type": "TOP"},
+      {"note": {"name": "Sandalwood", "imagePath": "/images/notes/sandalwood.jpg"}, "type": "BASE"},
+      {"note": {"name": "Violet Leaves", "imagePath": "/images/notes/violet_leaves.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Silver Mountain Water",
+    "brand": "Creed",
+    "price": 270.0,
+    "imagePath": "/images/perfumes/silver_mountain_water.jpg",
+    "description": "A crisp and refreshing fragrance with bergamot, green tea, and blackcurrant.",
+    "notes": [
+      {"note": {"name": "Bergamot", "imagePath": "/images/notes/bergamot.jpg"}, "type": "TOP"},
+      {"note": {"name": "Musk", "imagePath": "/images/notes/musk.jpg"}, "type": "BASE"},
+      {"note": {"name": "Green Tea", "imagePath": "/images/notes/green_tea.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Royal Princess Oud",
+    "brand": "Creed",
+    "price": 350.0,
+    "imagePath": "/images/perfumes/royal_princess_oud.jpg",
+    "description": "A luxurious and warm fragrance blending oud, rose, and creamy florals.",
+    "notes": [
+      {"note": {"name": "Oud", "imagePath": "/images/notes/oud.jpg"}, "type": "TOP"},
+      {"note": {"name": "Amber", "imagePath": "/images/notes/amber.jpg"}, "type": "BASE"},
+      {"note": {"name": "Rose", "imagePath": "/images/notes/rose.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Millesime Imperial",
+    "brand": "Creed",
+    "price": 300.0,
+    "imagePath": "/images/perfumes/millesime_imperial.jpg",
+    "description": "A sparkling, fresh marine fragrance with citrus and amber undertones.",
+    "notes": [
+      {"note": {"name": "Bergamot", "imagePath": "/images/notes/bergamot.jpg"}, "type": "TOP"},
+      {"note": {"name": "Amber", "imagePath": "/images/notes/amber.jpg"}, "type": "BASE"},
+      {"note": {"name": "Sea Salt", "imagePath": "/images/notes/sea_salt.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Bois du Portugal",
+    "brand": "Creed",
+    "price": 310.0,
+    "imagePath": "/images/perfumes/bois_du_portugal.jpg",
+    "description": "A rich, woody fragrance with notes of citrus, lavender, and oakmoss.",
+    "notes": [
+      {"note": {"name": "Bergamot", "imagePath": "/images/notes/bergamot.jpg"}, "type": "TOP"},
+      {"note": {"name": "Oakmoss", "imagePath": "/images/notes/oakmoss.jpg"}, "type": "BASE"},
+      {"note": {"name": "Lavender", "imagePath": "/images/notes/lavender.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Himalaya",
+    "brand": "Creed",
+    "price": 290.0,
+    "imagePath": "/images/perfumes/himalaya.jpg",
+    "description": "A fresh, woody fragrance inspired by mountain air and citrus orchards.",
+    "notes": [
+      {"note": {"name": "Grapefruit", "imagePath": "/images/notes/grapefruit.jpg"}, "type": "TOP"},
+      {"note": {"name": "Sandalwood", "imagePath": "/images/notes/sandalwood.jpg"}, "type": "BASE"},
+      {"note": {"name": "Cedarwood", "imagePath": "/images/notes/cedarwood.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Love in White",
+    "brand": "Creed",
+    "price": 280.0,
+    "imagePath": "/images/perfumes/love_in_white.jpg",
+    "description": "A delicate, floral fragrance with magnolia, orange flower, and rice notes.",
+    "notes": [
+      {"note": {"name": "Orange Blossom", "imagePath": "/images/notes/orange_blossom.jpg"}, "type": "TOP"},
+      {"note": {"name": "Rice", "imagePath": "/images/notes/rice.jpg"}, "type": "BASE"},
+      {"note": {"name": "Magnolia", "imagePath": "/images/notes/magnolia.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Fleurissimo",
+    "brand": "Creed",
+    "price": 300.0,
+    "imagePath": "/images/perfumes/fleurissimo.jpg",
+    "description": "A luxurious floral bouquet with rose, jasmine, and ylang-ylang notes.",
+    "notes": [
+      {"note": {"name": "Rose", "imagePath": "/images/notes/rose.jpg"}, "type": "TOP"},
+      {"note": {"name": "Ylang-Ylang", "imagePath": "/images/notes/ylang_ylang.jpg"}, "type": "BASE"},
+      {"note": {"name": "Jasmine", "imagePath": "/images/notes/jasmine.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Viking",
+    "brand": "Creed",
+    "price": 330.0,
+    "imagePath": "/images/perfumes/viking.jpg",
+    "description": "A bold, aromatic fragrance with citrus, pink pepper, and woody undertones.",
+    "notes": [
+      {"note": {"name": "Bergamot", "imagePath": "/images/notes/bergamot.jpg"}, "type": "TOP"},
+      {"note": {"name": "Ambergris", "imagePath": "/images/notes/ambergris.jpg"}, "type": "BASE"},
+      {"note": {"name": "Pink Pepper", "imagePath": "/images/notes/pink_pepper.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Bleu de Chanel",
+    "brand": "Chanel",
+    "price": 280.0,
+    "imagePath": "/images/perfumes/bleu_de_chanel.jpg",
+    "description": "A sophisticated woody-aromatic fragrance with notes of citrus and incense.",
+    "notes": [
+      {"note": {"name": "Grapefruit", "imagePath": "/images/notes/grapefruit.jpg"}, "type": "TOP"},
+      {"note": {"name": "Sandalwood", "imagePath": "/images/notes/sandalwood.jpg"}, "type": "BASE"},
+      {"note": {"name": "Incense", "imagePath": "/images/notes/incense.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Coco Mademoiselle",
+    "brand": "Chanel",
+    "price": 270.0,
+    "imagePath": "/images/perfumes/coco_mademoiselle.jpg",
+    "description": "A fresh and elegant oriental fragrance with citrus, rose, and patchouli.",
+    "notes": [
+      {"note": {"name": "Orange", "imagePath": "/images/notes/orange.jpg"}, "type": "TOP"},
+      {"note": {"name": "Patchouli", "imagePath": "/images/notes/patchouli.jpg"}, "type": "BASE"},
+      {"note": {"name": "Rose", "imagePath": "/images/notes/rose.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Chance Eau de Parfum",
+    "brand": "Chanel",
+    "price": 260.0,
+    "imagePath": "/images/perfumes/chance_eau_de_parfum.jpg",
+    "description": "A vibrant floral fragrance with hints of jasmine, pink pepper, and patchouli.",
+    "notes": [
+      {"note": {"name": "Pink Pepper", "imagePath": "/images/notes/pink_pepper.jpg"}, "type": "TOP"},
+      {"note": {"name": "Patchouli", "imagePath": "/images/notes/patchouli.jpg"}, "type": "BASE"},
+      {"note": {"name": "Jasmine", "imagePath": "/images/notes/jasmine.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "No. 5",
+    "brand": "Chanel",
+    "price": 300.0,
+    "imagePath": "/images/perfumes/no_5.jpg",
+    "description": "The iconic floral-aldehyde fragrance blending rose, jasmine, and ylang-ylang.",
+    "notes": [
+      {"note": {"name": "Aldehydes", "imagePath": "/images/notes/aldehydes.jpg"}, "type": "TOP"},
+      {"note": {"name": "Sandalwood", "imagePath": "/images/notes/sandalwood.jpg"}, "type": "BASE"},
+      {"note": {"name": "Jasmine", "imagePath": "/images/notes/jasmine.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Allure Homme Sport",
+    "brand": "Chanel",
+    "price": 250.0,
+    "imagePath": "/images/perfumes/allure_homme_sport.jpg",
+    "description": "A fresh, energetic fragrance combining citrus, pepper, and cedar notes.",
+    "notes": [
+      {"note": {"name": "Orange", "imagePath": "/images/notes/orange.jpg"}, "type": "TOP"},
+      {"note": {"name": "Cedar", "imagePath": "/images/notes/cedar.jpg"}, "type": "BASE"},
+      {"note": {"name": "Pepper", "imagePath": "/images/notes/pepper.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Gabrielle Chanel",
+    "brand": "Chanel",
+    "price": 280.0,
+    "imagePath": "/images/perfumes/gabrielle_chanel.jpg",
+    "description": "A radiant and floral fragrance highlighting jasmine, ylang-ylang, and orange blossom.",
+    "notes": [
+      {"note": {"name": "Jasmine", "imagePath": "/images/notes/jasmine.jpg"}, "type": "TOP"},
+      {"note": {"name": "Orange Blossom", "imagePath": "/images/notes/orange_blossom.jpg"}, "type": "BASE"},
+      {"note": {"name": "Ylang-Ylang", "imagePath": "/images/notes/ylang_ylang.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Les Exclusifs de Chanel: 1957",
+    "brand": "Chanel",
+    "price": 320.0,
+    "imagePath": "/images/perfumes/les_exclusifs_1957.jpg",
+    "description": "A warm and woody fragrance with hints of cedar, incense, and floral nuances.",
+    "notes": [
+      {"note": {"name": "Cedarwood", "imagePath": "/images/notes/cedarwood.jpg"}, "type": "TOP"},
+      {"note": {"name": "Incense", "imagePath": "/images/notes/incense.jpg"}, "type": "BASE"},
+      {"note": {"name": "Iris", "imagePath": "/images/notes/iris.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Coco Noir",
+    "brand": "Chanel",
+    "price": 290.0,
+    "imagePath": "/images/perfumes/coco_noir.jpg",
+    "description": "A dark and sensual oriental fragrance with patchouli, grapefruit, and tonka bean.",
+    "notes": [
+      {"note": {"name": "Grapefruit", "imagePath": "/images/notes/grapefruit.jpg"}, "type": "TOP"},
+      {"note": {"name": "Tonka Bean", "imagePath": "/images/notes/tonka_bean.jpg"}, "type": "BASE"},
+      {"note": {"name": "Patchouli", "imagePath": "/images/notes/patchouli.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Cristalle",
+    "brand": "Chanel",
+    "price": 270.0,
+    "imagePath": "/images/perfumes/cristalle.jpg",
+    "description": "A sparkling, fresh floral fragrance with notes of lemon, hyacinth, and oakmoss.",
+    "notes": [
+      {"note": {"name": "Lemon", "imagePath": "/images/notes/lemon.jpg"}, "type": "TOP"},
+      {"note": {"name": "Oakmoss", "imagePath": "/images/notes/oakmoss.jpg"}, "type": "BASE"},
+      {"note": {"name": "Hyacinth", "imagePath": "/images/notes/hyacinth.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Allure Homme",
+    "brand": "Chanel",
+    "price": 260.0,
+    "imagePath": "/images/perfumes/allure_homme.jpg",
+    "description": "A refined masculine fragrance with citrus, spicy, and woody notes.",
+    "notes": [
+      {"note": {"name": "Lemon", "imagePath": "/images/notes/lemon.jpg"}, "type": "TOP"},
+      {"note": {"name": "Sandalwood", "imagePath": "/images/notes/sandalwood.jpg"}, "type": "BASE"},
+      {"note": {"name": "Pepper", "imagePath": "/images/notes/pepper.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "J’adore",
+    "brand": "Dior",
+    "price": 270.0,
+    "imagePath": "/images/perfumes/jadore.jpg",
+    "description": "A radiant floral fragrance blending ylang-ylang, Damascus rose, and jasmine.",
+    "notes": [
+      {"note": {"name": "Ylang-Ylang", "imagePath": "/images/notes/ylang_ylang.jpg"}, "type": "TOP"},
+      {"note": {"name": "Musk", "imagePath": "/images/notes/musk.jpg"}, "type": "BASE"},
+      {"note": {"name": "Jasmine", "imagePath": "/images/notes/jasmine.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Miss Dior",
+    "brand": "Dior",
+    "price": 260.0,
+    "imagePath": "/images/perfumes/miss_dior.jpg",
+    "description": "A fresh and elegant floral fragrance with notes of rose, patchouli, and mandarin.",
+    "notes": [
+      {"note": {"name": "Rose", "imagePath": "/images/notes/rose.jpg"}, "type": "TOP"},
+      {"note": {"name": "Patchouli", "imagePath": "/images/notes/patchouli.jpg"}, "type": "BASE"},
+      {"note": {"name": "Mandarin", "imagePath": "/images/notes/mandarin.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Sauvage",
+    "brand": "Dior",
+    "price": 300.0,
+    "imagePath": "/images/perfumes/sauvage.jpg",
+    "description": "A fresh and spicy fragrance featuring bergamot, pepper, and ambroxan.",
+    "notes": [
+      {"note": {"name": "Bergamot", "imagePath": "/images/notes/bergamot.jpg"}, "type": "TOP"},
+      {"note": {"name": "Ambroxan", "imagePath": "/images/notes/ambroxan.jpg"}, "type": "BASE"},
+      {"note": {"name": "Pepper", "imagePath": "/images/notes/pepper.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Dior Addict",
+    "brand": "Dior",
+    "price": 280.0,
+    "imagePath": "/images/perfumes/dior_addict.jpg",
+    "description": "A warm and oriental fragrance with notes of vanilla, silk tree flower, and tonka bean.",
+    "notes": [
+      {"note": {"name": "Vanilla", "imagePath": "/images/notes/vanilla.jpg"}, "type": "TOP"},
+      {"note": {"name": "Tonka Bean", "imagePath": "/images/notes/tonka_bean.jpg"}, "type": "BASE"},
+      {"note": {"name": "Silk Tree Flower", "imagePath": "/images/notes/silk_tree_flower.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Fahrenheit",
+    "brand": "Dior",
+    "price": 270.0,
+    "imagePath": "/images/perfumes/fahrenheit.jpg",
+    "description": "A classic masculine fragrance with notes of leather, mandarin, and violet.",
+    "notes": [
+      {"note": {"name": "Mandarin", "imagePath": "/images/notes/mandarin.jpg"}, "type": "TOP"},
+      {"note": {"name": "Leather", "imagePath": "/images/notes/leather.jpg"}, "type": "BASE"},
+      {"note": {"name": "Violet", "imagePath": "/images/notes/violet.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Poison",
+    "brand": "Dior",
+    "price": 290.0,
+    "imagePath": "/images/perfumes/poison.jpg",
+    "description": "A bold and mysterious fragrance with spicy, fruity, and floral notes.",
+    "notes": [
+      {"note": {"name": "Cinnamon", "imagePath": "/images/notes/cinnamon.jpg"}, "type": "TOP"},
+      {"note": {"name": "Amber", "imagePath": "/images/notes/amber.jpg"}, "type": "BASE"},
+      {"note": {"name": "Plum", "imagePath": "/images/notes/plum.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Dune",
+    "brand": "Dior",
+    "price": 260.0,
+    "imagePath": "/images/perfumes/dune.jpg",
+    "description": "A fresh and aromatic fragrance blending sea notes, mandarin, and sandalwood.",
+    "notes": [
+      {"note": {"name": "Sea Notes", "imagePath": "/images/notes/sea_notes.jpg"}, "type": "TOP"},
+      {"note": {"name": "Sandalwood", "imagePath": "/images/notes/sandalwood.jpg"}, "type": "BASE"},
+      {"note": {"name": "Mandarin", "imagePath": "/images/notes/mandarin.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Hypnotic Poison",
+    "brand": "Dior",
+    "price": 280.0,
+    "imagePath": "/images/perfumes/hypnotic_poison.jpg",
+    "description": "A sensual, sweet oriental fragrance with vanilla, almond, and jasmine notes.",
+    "notes": [
+      {"note": {"name": "Vanilla", "imagePath": "/images/notes/vanilla.jpg"}, "type": "TOP"},
+      {"note": {"name": "Almond", "imagePath": "/images/notes/almond.jpg"}, "type": "BASE"},
+      {"note": {"name": "Jasmine", "imagePath": "/images/notes/jasmine.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Joy by Dior",
+    "brand": "Dior",
+    "price": 300.0,
+    "imagePath": "/images/perfumes/joy_by_dior.jpg",
+    "description": "A bright floral fragrance featuring bergamot, jasmine, and rose.",
+    "notes": [
+      {"note": {"name": "Bergamot", "imagePath": "/images/notes/bergamot.jpg"}, "type": "TOP"},
+      {"note": {"name": "Musk", "imagePath": "/images/notes/musk.jpg"}, "type": "BASE"},
+      {"note": {"name": "Rose", "imagePath": "/images/notes/rose.jpg"}, "type": "MIDDLE"}
+    ]
+  },
+  {
+    "name": "Dior Homme Intense",
+    "brand": "Dior",
+    "price": 310.0,
+    "imagePath": "/images/perfumes/dior_homme_intense.jpg",
+    "description": "A refined, woody floral fragrance with iris, amber, and vetiver notes.",
+    "notes": [
+      {"note": {"name": "Iris", "imagePath": "/images/notes/iris.jpg"}, "type": "TOP"},
+      {"note": {"name": "Amber", "imagePath": "/images/notes/amber.jpg"}, "type": "BASE"},
+      {"note": {"name": "Vetiver", "imagePath": "/images/notes/vetiver.jpg"}, "type": "MIDDLE"}
+    ]
+  }
+]
