@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Visa",
+    "type": "CARD",
+    "imagePath": "/images/payments/visa.png",
+    "enabled": true
+  },
+  {
+    "name": "Mastercard",
+    "type": "CARD",
+    "imagePath": "/images/payments/mastercard.png",
+    "enabled": true
+  },
+  {
+    "name": "Paypal",
+    "type": "PAYPAL",
+    "imagePath": "/images/payments/paypal.png",
+    "enabled": true
+  }
+]

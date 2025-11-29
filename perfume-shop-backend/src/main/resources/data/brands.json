@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Tom Ford",
+    "description": "Tom Ford is known for bold, luxurious fragrances with rich, sensual compositions.",
+    "logoPath": "/images/brands/tomford.png"
+  },
+  {
+    "name": "Penhaligon’s",
+    "description": "A historic British perfume house known for refined and whimsical scents with aristocratic charm.",
+    "logoPath": "/images/brands/penhaligons.png"
+  },
+  {
+    "name": "Kayali",
+    "description": "Kayali fragrances blend modern sweetness and Middle Eastern inspiration, crafted by Huda Beauty.",
+    "logoPath": "/images/brands/kayali.png"
+  },
+  {
+    "name": "Creed",
+    "description": "Creed is a luxury niche perfume house celebrated for fresh, elegant, handcrafted scents.",
+    "logoPath": "/images/brands/creed.png"
+  },
+  {
+    "name": "Chanel",
+    "description": "Chanel offers timeless, sophisticated perfumes that embody elegance and Parisian chic.",
+    "logoPath": "/images/brands/chanel.png"
+  },
+  {
+    "name": "Dior",
+    "description": "Dior fragrances blend luxury, artistry, and modern refinement across iconic perfume collections.",
+    "logoPath": "/images/brands/dior.png"
+  }
+]
