@@ -27,7 +27,9 @@ public class Order {
     private String deliveryAddress;  // used only for shipping
     private String pickupLocation = "123 Corniche St., Elite Notes Store, Doha, Qatar"; // used only for pickup
 
-    private String paymentStatus;  
+    private String paymentStatus; 
+    private PaymentMethod paymentMethod; // <--- HERE
+ 
     private OrderStatus orderStatus;    
 
     private LocalDateTime createdAt;
