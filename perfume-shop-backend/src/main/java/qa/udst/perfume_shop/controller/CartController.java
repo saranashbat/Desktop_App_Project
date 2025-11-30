@@ -11,6 +11,7 @@ import qa.udst.perfume_shop.service.CartService;
 @RestController
 @RequestMapping("/api/carts")
 @RequiredArgsConstructor
+@CrossOrigin("*") // ✅ Allow Flutter to connect
 public class CartController {
 
     private final CartService cartService;
@@ -30,12 +31,28 @@ public class CartController {
         return ResponseEntity.ok(cartService.addItem(userId, item));
     }
 
+    @Operation(summary = "Remove item from cart")
     @DeleteMapping("/user/{userId}/remove/{perfumeName}")
-public ResponseEntity<Cart> removeItem(
-        @PathVariable String userId,
-        @PathVariable String perfumeName
-) {
-    return ResponseEntity.ok(cartService.removeItemByName(userId, perfumeName));
-}
+    public ResponseEntity<Cart> removeItem(
+            @PathVariable String userId,
+            @PathVariable String perfumeName
+    ) {
+        return ResponseEntity.ok(cartService.removeItemByName(userId, perfumeName));
+    }
 
+    @Operation(summary = "Update item quantity")
+    @PatchMapping("/user/{userId}/update")
+    public ResponseEntity<Cart> updateQuantity(
+            @PathVariable String userId,
+            @RequestParam String perfumeName,
+            @RequestParam int quantity
+    ) {
+        return ResponseEntity.ok(cartService.updateItemQuantity(userId, perfumeName, quantity));
+    }
+
+    @Operation(summary = "Clear cart")
+    @DeleteMapping("/user/{userId}/clear")
+    public ResponseEntity<Cart> clearCart(@PathVariable String userId) {
+        return ResponseEntity.ok(cartService.clearCart(userId));
+    }
 }
