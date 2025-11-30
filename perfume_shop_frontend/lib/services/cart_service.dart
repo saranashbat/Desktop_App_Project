@@ -40,16 +40,17 @@ class CartService {
   // -------------------------------
   // REMOVE ITEM FROM CART
   // -------------------------------
-  Future<Cart> removeItem(String userId, String perfumeId) async {
-    final response = await http.delete(
-      Uri.parse('${GlobalParameters.cartsEndpoint}/user/$userId/remove/$perfumeId'),
-      headers: {'Content-Type': 'application/json'},
-    );
+ Future<Cart> removeItem(String userId, String perfumeName) async {
+  final response = await http.delete(
+    Uri.parse('${GlobalParameters.cartsEndpoint}/user/$userId/remove/$perfumeName'),
+    headers: {'Content-Type': 'application/json'},
+  );
 
-    if (response.statusCode == 200) {
-      return Cart.fromJson(jsonDecode(response.body));
-    } else {
-      throw Exception("Failed to remove item from cart");
-    }
+  if (response.statusCode == 200) {
+    return Cart.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception("Failed to remove item from cart");
   }
+}
+
 }

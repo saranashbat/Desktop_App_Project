@@ -8,6 +8,7 @@ import qa.udst.perfume_shop.repository.CartRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.ArrayList;
 
 @Service
 @RequiredArgsConstructor
@@ -32,32 +33,49 @@ public class CartService {
         return cartRepository.save(cart);
     }
 
-    // Add item to cart
     public Cart addItem(String userId, CartItem item) {
-        Cart cart = getCartByUser(userId);
+    Cart cart = getCartByUser(userId);
+    if (cart == null) {
+        cart = new Cart();
+        cart.setUserId(userId);
+        cart.setItems(new ArrayList<>());
+    }
+
+    // Check if item already exists by perfume name
+    Optional<CartItem> existing = cart.getItems().stream()
+        .filter(i -> i.getPerfumeName().equalsIgnoreCase(item.getPerfumeName()))
+        .findFirst();
+
+    if (existing.isPresent()) {
+        existing.get().setQuantity(existing.get().getQuantity() + item.getQuantity());
+    } else {
         cart.getItems().add(item);
-        updateTotals(cart);
-        return cartRepository.save(cart);
     }
 
-    // Remove item from cart
-    public Cart removeItem(String userId, String perfumeId) {
-        Cart cart = getCartByUser(userId);
-        cart.getItems().removeIf(i -> i.getPerfumeId().equals(perfumeId));
-        updateTotals(cart);
-        return cartRepository.save(cart);
-    }
+    recalculateCart(cart);
+    // save cart to DB (repository.save(cart))
+    return cart;
+}
 
-    // Helper to recalc totals
-    private void updateTotals(Cart cart) {
-        double subtotal = cart.getItems().stream()
-                .mapToDouble(i -> i.getUnitPrice() * i.getQuantity())
-                .sum();
-        cart.setSubtotal(subtotal);
-
-        // Example delivery fee logic
-        double deliveryFee = subtotal > 200 ? 0 : 20;
-        cart.setDeliveryFee(deliveryFee);
-        cart.setTotal(subtotal + deliveryFee);
+public Cart removeItemByName(String userId, String perfumeName) {
+    Cart cart = getCartByUser(userId);
+    if (cart != null) {
+        cart.setItems(cart.getItems().stream()
+                .filter(i -> !i.getPerfumeName().equalsIgnoreCase(perfumeName))
+                .toList());
+        recalculateCart(cart);
+        // save cart to DB
     }
+    return cart;
+}
+
+// Optional: recalc subtotal/total
+private void recalculateCart(Cart cart) {
+    double subtotal = cart.getItems().stream()
+            .mapToDouble(i -> i.getUnitPrice() * i.getQuantity())
+            .sum();
+    cart.setSubtotal(subtotal);
+    cart.setDeliveryFee(subtotal > 0 ? 5.0 : 0.0); // example
+    cart.setTotal(subtotal + cart.getDeliveryFee());
+}
 }

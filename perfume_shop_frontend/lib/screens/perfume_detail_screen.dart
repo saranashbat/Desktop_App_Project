@@ -5,6 +5,7 @@ import '../models/cart_item.dart';
 import '../services/cart_service.dart';
 import '../utils/app_state.dart';
 import '../utils/constants.dart';
+import '../models/user.dart';
 
 class PerfumeDetailScreen extends StatefulWidget {
   final Perfume perfume;
@@ -17,36 +18,75 @@ class PerfumeDetailScreen extends StatefulWidget {
 
 class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
   bool adding = false;
-  final isBestSeller = false;
 
   @override
   void initState() {
     super.initState();
+    AppState().setUser(User(
+        id: 'test123',
+        username: 'Test User',
+        email: 'test@test.com',
+        imagePath: null,
+        passwordHash: "hi",
+      ));
+
+    // TEMP: fake user for testing (remove when auth is ready)
+    if (AppState().currentUser == null) {
+      AppState().setUser(User(
+        id: '692b389f2ed9ab2e8dd265cf',
+        username: 'Test User',
+        email: 'test@test.com',
+        imagePath: null,
+        passwordHash: "hi",
+      ));
+    }
+
+    // DEBUG: print perfume info
+    print('--- Perfume Detail Debug ---');
+    print('Perfume name: ${widget.perfume.name}');
+    print('Perfume ID: ${widget.perfume.id}');
+    print('Perfume image: ${widget.perfume.imagePath}');
+    for (var noteEntry in widget.perfume.notes) {
+      final note = noteEntry.note;
+      if (note != null) print('Note: ${note.name}, Image: ${note.photo}');
+    }
+    print('----------------------------');
   }
 
   Future<void> addToCart() async {
-    if (AppState().currentUser == null) {
+    final user = AppState().currentUser;
+    final perfumeName = widget.perfume.name;
+
+    if (user == null || user.id == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please login first')),
+        const SnackBar(content: Text('Please login first or user ID missing')),
+      );
+      return;
+    }
+
+    if (perfumeName.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Invalid perfume name')),
       );
       return;
     }
 
     setState(() => adding = true);
 
+    final item = CartItem(
+      perfumeName: perfumeName,
+      unitPrice: widget.perfume.price,
+      quantity: 1,
+    );
+
+    print('Adding to cart: $perfumeName, userId: ${user.id}');
+
     try {
-      final item = CartItem(
-        perfumeId: widget.perfume.id ?? '',
-        perfumeName: widget.perfume.name,
-        unitPrice: widget.perfume.price,
-        quantity: 1,
-      );
+      final cart = await CartService().addItem(user.id!, item);
 
-      final cart = await CartService()
-          .addItem(AppState().currentUser!.id!, item);
+      if (cart == null) throw Exception('CartService returned null');
+
       AppState().setCart(cart);
-
-      setState(() => adding = false);
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -57,23 +97,22 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
         );
       }
     } catch (e) {
-      setState(() => adding = false);
+      print('AddToCart error: $e');
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Error: $e')),
         );
       }
+    } finally {
+      setState(() => adding = false);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final topNotes =
-        widget.perfume.notes.where((n) => n.type == 'TOP').toList();
-    final middleNotes =
-        widget.perfume.notes.where((n) => n.type == 'MIDDLE').toList();
-    final baseNotes =
-        widget.perfume.notes.where((n) => n.type == 'BASE').toList();
+    final topNotes = widget.perfume.notes.where((n) => n.type == 'TOP').toList();
+    final middleNotes = widget.perfume.notes.where((n) => n.type == 'MIDDLE').toList();
+    final baseNotes = widget.perfume.notes.where((n) => n.type == 'BASE').toList();
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -88,7 +127,7 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Hero(
-              tag: 'perfume-${widget.perfume.id}',
+              tag: 'perfume-${widget.perfume.name}',
               child: Container(
                 height: 400,
                 width: double.infinity,
@@ -117,8 +156,7 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(widget.perfume.name,
-                                style: AppTextStyles.h1),
+                            Text(widget.perfume.name, style: AppTextStyles.h1),
                             const SizedBox(height: AppSpacing.xs),
                             Text(widget.perfume.brand,
                                 style: AppTextStyles.h3.copyWith(
@@ -126,49 +164,35 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
                           ],
                         ),
                       ),
-                      if (bestSellingIds
-                          .contains(widget.perfume.id ?? ''))
+                      if (bestSellingIds.contains(widget.perfume.id ?? ''))
                         Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 6,
-                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                           decoration: BoxDecoration(
                             color: AppColors.bestSellerOrange,
-                            borderRadius:
-                                BorderRadius.circular(AppBorderRadius.sm),
+                            borderRadius: BorderRadius.circular(AppBorderRadius.sm),
                           ),
                           child: const Text(
                             'BEST SELLER',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
                           ),
                         ),
                     ],
                   ),
                   const SizedBox(height: AppSpacing.lg),
                   Text('\$${widget.perfume.price.toStringAsFixed(2)}',
-                      style: AppTextStyles.h1
-                          .copyWith(color: AppColors.primary)),
+                      style: AppTextStyles.h1.copyWith(color: AppColors.primary)),
                   const SizedBox(height: AppSpacing.lg),
                   if (widget.perfume.description != null) ...[
                     Text('Description', style: AppTextStyles.h2),
                     const SizedBox(height: AppSpacing.sm),
-                    Text(widget.perfume.description!,
-                        style: AppTextStyles.body),
+                    Text(widget.perfume.description!, style: AppTextStyles.body),
                     const SizedBox(height: AppSpacing.lg),
                   ],
                   Text('Fragrance Notes', style: AppTextStyles.h2),
                   const SizedBox(height: AppSpacing.md),
-                  if (topNotes.isNotEmpty)
-                    _buildNoteSection('Top Notes', topNotes),
-                  if (middleNotes.isNotEmpty)
-                    _buildNoteSection('Middle Notes', middleNotes),
-                  if (baseNotes.isNotEmpty)
-                    _buildNoteSection('Base Notes', baseNotes),
+                  if (topNotes.isNotEmpty) _buildNoteSection('Top Notes', topNotes),
+                  if (middleNotes.isNotEmpty) _buildNoteSection('Middle Notes', middleNotes),
+                  if (baseNotes.isNotEmpty) _buildNoteSection('Base Notes', baseNotes),
                 ],
               ),
             ),
@@ -179,13 +203,7 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
         padding: const EdgeInsets.all(AppSpacing.md),
         decoration: BoxDecoration(
           color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 10,
-              offset: const Offset(0, -2),
-            ),
-          ],
+          boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 10, offset: const Offset(0, -2))],
         ),
         child: SafeArea(
           child: SizedBox(
@@ -196,18 +214,14 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
                   ? const SizedBox(
                       height: 20,
                       width: 20,
-                      child: CircularProgressIndicator(
-                          color: Colors.white, strokeWidth: 2),
+                      child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
                     )
                   : const Icon(Icons.shopping_cart),
-              label: Text(adding ? 'Adding...' : 'Add to Cart',
-                  style: AppTextStyles.button),
+              label: Text(adding ? 'Adding...' : 'Add to Cart', style: AppTextStyles.button),
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primary,
                 foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(AppBorderRadius.md),
-                ),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppBorderRadius.md)),
               ),
             ),
           ),
@@ -220,8 +234,7 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title,
-            style: AppTextStyles.h3.copyWith(color: AppColors.primary)),
+        Text(title, style: AppTextStyles.h3.copyWith(color: AppColors.primary)),
         const SizedBox(height: AppSpacing.sm),
         Wrap(
           spacing: AppSpacing.sm,
@@ -232,12 +245,9 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
             return Chip(
               avatar: notePhoto != null
                   ? CircleAvatar(
-                      backgroundImage: AssetImage(
-                          'assets/images/notes/${notePhoto.split('/').last}'),
+                      backgroundImage: AssetImage('assets/images/notes/${notePhoto.split('/').last}'),
                     )
-                  : const CircleAvatar(
-                      child: Icon(Icons.spa, size: 16),
-                    ),
+                  : const CircleAvatar(child: Icon(Icons.spa, size: 16)),
               label: Text(noteName),
               backgroundColor: AppColors.primary.withOpacity(0.1),
             );

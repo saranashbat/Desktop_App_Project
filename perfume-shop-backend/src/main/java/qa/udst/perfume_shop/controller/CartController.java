@@ -30,12 +30,12 @@ public class CartController {
         return ResponseEntity.ok(cartService.addItem(userId, item));
     }
 
-    @Operation(summary = "Remove item from cart")
-    @DeleteMapping("/user/{userId}/remove/{perfumeId}")
-    public ResponseEntity<Cart> removeItem(
-            @PathVariable String userId,
-            @PathVariable String perfumeId
-    ) {
-        return ResponseEntity.ok(cartService.removeItem(userId, perfumeId));
-    }
+    @DeleteMapping("/user/{userId}/remove/{perfumeName}")
+public ResponseEntity<Cart> removeItem(
+        @PathVariable String userId,
+        @PathVariable String perfumeName
+) {
+    return ResponseEntity.ok(cartService.removeItemByName(userId, perfumeName));
+}
+
 }

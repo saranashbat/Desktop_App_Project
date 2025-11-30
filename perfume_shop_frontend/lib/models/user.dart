@@ -18,7 +18,7 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      id: json['_id']?['\$oid'], // if MongoDB ObjectId comes this way
+      id: json['_id'] != null ? json['_id']['\$oid'] as String? : null, // ✅ FIXED
       username: json['username'],
       email: json['email'],
       imagePath: json['imagePath'],

@@ -1,9 +1,10 @@
+// payment_method.dart
 class PaymentMethod {
   String? id;
-  String name;       // "Visa", "Mastercard", "Cash on Delivery"
-  String type;       // "CARD", "WALLET", "COD"
-  String? imagePath; // e.g., "/images/payments/visa.png"
-  bool enabled;      // true if available
+  String name;
+  String type;
+  String? imagePath;
+  bool enabled;
 
   PaymentMethod({
     this.id,
@@ -15,11 +16,11 @@ class PaymentMethod {
 
   factory PaymentMethod.fromJson(Map<String, dynamic> json) {
     return PaymentMethod(
-      id: json['_id']?['\$oid'], // if MongoDB ObjectId comes this way
+      id: json['_id'] != null ? json['_id']['\$oid'] as String? : null, // ✅ FIXED
       name: json['name'],
       type: json['type'],
       imagePath: json['imagePath'],
-      enabled: json['enabled'] ?? true, // default true if missing
+      enabled: json['enabled'] ?? true,
     );
   }
 

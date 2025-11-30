@@ -37,16 +37,23 @@ class AppState {
     return currentCart?.total ?? 0.0;
   }
 
-  bool isInCart(String perfumeId) {
+  // -------------------------------
+  // Check if perfume is in cart by name
+  // -------------------------------
+  bool isInCart(String perfumeName) {
     if (currentCart == null) return false;
-    return currentCart!.items.any((item) => item.perfumeId == perfumeId);
+    return currentCart!.items
+        .any((item) => item.perfumeName.toLowerCase() == perfumeName.toLowerCase());
   }
 
-  int getQuantityInCart(String perfumeId) {
+  // -------------------------------
+  // Get quantity of a perfume in cart by name
+  // -------------------------------
+  int getQuantityInCart(String perfumeName) {
     if (currentCart == null) return 0;
     try {
       final item = currentCart!.items.firstWhere(
-        (item) => item.perfumeId == perfumeId,
+        (item) => item.perfumeName.toLowerCase() == perfumeName.toLowerCase(),
       );
       return item.quantity;
     } catch (e) {

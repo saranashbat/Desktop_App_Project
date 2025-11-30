@@ -20,14 +20,14 @@ class Perfume {
     required this.notes,
   });
 
-   factory Perfume.fromJson(Map<String, dynamic> json) {
+  factory Perfume.fromJson(Map<String, dynamic> json) {
     return Perfume(
-      id: json['_id']?['\$oid'],
+      id: json['_id'] != null ? json['_id']['\$oid'] as String? : null,  // ✅ FIXED!
       name: json['name'] ?? 'Unknown',
       brand: json['brand'] ?? 'Unknown',
       price: (json['price'] as num?)?.toDouble() ?? 0.0,
-      imagePath: json['imagePath'],          // can be null
-      description: json['description'],      // can be null
+      imagePath: json['imagePath'],
+      description: json['description'],
       notes: (json['notes'] as List? ?? [])
           .map((e) => PerfumeNote.fromJson(e))
           .toList(),

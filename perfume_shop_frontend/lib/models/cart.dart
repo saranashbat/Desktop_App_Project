@@ -19,17 +19,17 @@ class Cart {
   });
 
   factory Cart.fromJson(Map<String, dynamic> json) {
-    return Cart(
-      id: json['_id']?['\$oid'],
-      userId: json['userId'],
-      items: (json['items'] as List)
-          .map((e) => CartItem.fromJson(e))
-          .toList(),
-      subtotal: (json['subtotal'] as num).toDouble(),
-      deliveryFee: (json['deliveryFee'] as num).toDouble(),
-      total: (json['total'] as num).toDouble(),
-    );
-  }
+  return Cart(
+    id: json['_id'] != null ? json['_id']['\$oid'] : null,
+    userId: json['userId'],
+    items: (json['items'] as List)
+        .map((e) => CartItem.fromJson(e))
+        .toList(),
+    subtotal: (json['subtotal'] as num).toDouble(),
+    deliveryFee: (json['deliveryFee'] as num).toDouble(),
+    total: (json['total'] as num).toDouble(),
+  );
+}
 
   Map<String, dynamic> toJson() {
     return {
