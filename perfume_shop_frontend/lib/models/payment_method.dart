@@ -1,4 +1,4 @@
-// payment_method.dart
+// lib/models/payment_method.dart
 class PaymentMethod {
   String? id;
   String name;
@@ -15,10 +15,25 @@ class PaymentMethod {
   });
 
   factory PaymentMethod.fromJson(Map<String, dynamic> json) {
+    // ✅ FIX: Handle both 'id' and '_id' formats
+    String? parsedId;
+    
+    if (json['id'] != null) {
+      // Backend sends "id" directly as string
+      parsedId = json['id'] as String;
+    } else if (json['_id'] != null) {
+      // MongoDB format with $oid
+      if (json['_id'] is Map) {
+        parsedId = json['_id']['\$oid'] as String?;
+      } else {
+        parsedId = json['_id'] as String;
+      }
+    }
+
     return PaymentMethod(
-      id: json['_id'] != null ? json['_id']['\$oid'] as String? : null, // ✅ FIXED
-      name: json['name'],
-      type: json['type'],
+      id: parsedId,
+      name: json['name'] ?? 'Unknown',
+      type: json['type'] ?? 'UNKNOWN',
       imagePath: json['imagePath'],
       enabled: json['enabled'] ?? true,
     );
@@ -26,7 +41,7 @@ class PaymentMethod {
 
   Map<String, dynamic> toJson() {
     return {
-      '_id': id,
+      'id': id,
       'name': name,
       'type': type,
       'imagePath': imagePath,
