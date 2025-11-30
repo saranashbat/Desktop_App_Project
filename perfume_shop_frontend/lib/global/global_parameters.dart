@@ -3,7 +3,7 @@
 class GlobalParameters {
   // Base URL of your Spring Boot backend
   // Change this if your backend runs elsewhere (e.g., LAN IP, production)
-  static const String apiBaseUrl = 'http://localhost:8080';
+  static const String apiBaseUrl = 'http://localhost:8080/api';
 
   // Perfumes endpoint
   static const String perfumesEndpoint = '$apiBaseUrl/perfumes';

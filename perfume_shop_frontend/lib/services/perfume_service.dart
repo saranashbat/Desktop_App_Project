@@ -8,15 +8,26 @@ class PerfumeService {
   // GET ALL PERFUMES
   // -------------------------------
   Future<List<Perfume>> getAllPerfumes() async {
-    final response = await http.get(Uri.parse(GlobalParameters.perfumesEndpoint));
+  final response = await http.get(Uri.parse(GlobalParameters.perfumesEndpoint));
 
-    if (response.statusCode == 200) {
-      List<dynamic> data = jsonDecode(response.body);
-      return data.map((e) => Perfume.fromJson(e)).toList();
+  if (response.statusCode == 200) {
+    final decoded = jsonDecode(response.body);
+
+    // If backend returns a list
+    if (decoded is List) {
+      return decoded.map((e) => Perfume.fromJson(e)).toList();
+    } 
+    // If backend returns a single object
+    else if (decoded is Map<String, dynamic>) {
+      return [Perfume.fromJson(decoded)];
     } else {
-      throw Exception('Failed to load perfumes');
+      throw Exception('Unexpected response format');
     }
+  } else {
+    throw Exception('Failed to load perfumes');
   }
+}
+
 
   // -------------------------------
   // GET PERFUME BY ID

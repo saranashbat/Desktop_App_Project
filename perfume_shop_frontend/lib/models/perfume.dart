@@ -6,8 +6,8 @@ class Perfume {
   String name;
   String brand;
   double price;
-  String imagePath;
-  String description;
+  String? imagePath;
+  String? description;
   List<PerfumeNote> notes;
 
   Perfume({
@@ -20,15 +20,15 @@ class Perfume {
     required this.notes,
   });
 
-  factory Perfume.fromJson(Map<String, dynamic> json) {
+   factory Perfume.fromJson(Map<String, dynamic> json) {
     return Perfume(
-      id: json['_id']?['\$oid'], // if MongoDB ObjectId comes this way
-      name: json['name'],
-      brand: json['brand'],
-      price: (json['price'] as num).toDouble(),
-      imagePath: json['imagePath'],
-      description: json['description'],
-      notes: (json['notes'] as List)
+      id: json['_id']?['\$oid'],
+      name: json['name'] ?? 'Unknown',
+      brand: json['brand'] ?? 'Unknown',
+      price: (json['price'] as num?)?.toDouble() ?? 0.0,
+      imagePath: json['imagePath'],          // can be null
+      description: json['description'],      // can be null
+      notes: (json['notes'] as List? ?? [])
           .map((e) => PerfumeNote.fromJson(e))
           .toList(),
     );

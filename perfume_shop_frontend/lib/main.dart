@@ -1,38 +1,23 @@
 import 'package:flutter/material.dart';
+import 'screens/perfumes_screen.dart';
 
 void main() {
-  runApp(const PerfumeTestApp());
+  runApp(const MyApp());
 }
 
-class PerfumeTestApp extends StatelessWidget {
-  const PerfumeTestApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Perfume Image Test',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Perfume Image Test'),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Lost Cherry',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 20),
-              Image.asset(
-                'assets/images/perfumes/lost_cherry.jpg',
-                width: 200,
-                height: 200,
-              ),
-            ],
-          ),
-        ),
+      title: 'Perfume Shop',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
+      home: const PerfumesScreen(),
     );
   }
 }
