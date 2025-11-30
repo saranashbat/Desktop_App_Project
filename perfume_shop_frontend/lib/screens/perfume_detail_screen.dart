@@ -5,7 +5,6 @@ import '../models/cart_item.dart';
 import '../services/cart_service.dart';
 import '../utils/app_state.dart';
 import '../utils/constants.dart';
-import '../models/user.dart';
 
 class PerfumeDetailScreen extends StatefulWidget {
   final Perfume perfume;
@@ -18,94 +17,53 @@ class PerfumeDetailScreen extends StatefulWidget {
 
 class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
   bool adding = false;
+  final CartService _cartService = CartService();
 
-  @override
-  void initState() {
-    super.initState();
-    AppState().setUser(User(
-        id: 'test123',
-        username: 'Test User',
-        email: 'test@test.com',
-        imagePath: null,
-        passwordHash: "hi",
-      ));
-
-    // TEMP: fake user for testing (remove when auth is ready)
-    if (AppState().currentUser == null) {
-      AppState().setUser(User(
-        id: '692b389f2ed9ab2e8dd265cf',
-        username: 'Test User',
-        email: 'test@test.com',
-        imagePath: null,
-        passwordHash: "hi",
-      ));
-    }
-
-    // DEBUG: print perfume info
-    print('--- Perfume Detail Debug ---');
-    print('Perfume name: ${widget.perfume.name}');
-    print('Perfume ID: ${widget.perfume.id}');
-    print('Perfume image: ${widget.perfume.imagePath}');
-    for (var noteEntry in widget.perfume.notes) {
-      final note = noteEntry.note;
-      if (note != null) print('Note: ${note.name}, Image: ${note.photo}');
-    }
-    print('----------------------------');
-  }
-
-  Future<void> addToCart() async {
+  Future<void> _addToCart() async {
     final user = AppState().currentUser;
-    final perfumeName = widget.perfume.name;
 
     if (user == null || user.id == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please login first or user ID missing')),
-      );
-      return;
-    }
-
-    if (perfumeName.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Invalid perfume name')),
-      );
+      _showError('Please login first');
       return;
     }
 
     setState(() => adding = true);
 
     final item = CartItem(
-      perfumeName: perfumeName,
+      perfumeName: widget.perfume.name,
       unitPrice: widget.perfume.price,
       quantity: 1,
     );
 
-    print('Adding to cart: $perfumeName, userId: ${user.id}');
+    print('🛒 Adding to cart: ${widget.perfume.name}');
 
     try {
-      final cart = await CartService().addItem(user.id!, item);
+      final cart = await _cartService.addItem(user.id!, item);
 
-      if (cart == null) throw Exception('CartService returned null');
-
-      AppState().setCart(cart);
-
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Added to cart!'),
-            backgroundColor: AppColors.success,
-          ),
-        );
+      if (cart != null) {
+        AppState().setCart(cart);
+        _showSuccess('Added to cart!');
       }
     } catch (e) {
-      print('AddToCart error: $e');
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $e')),
-        );
-      }
+      print('❌ Error: $e');
+      _showError('Failed to add to cart');
     } finally {
-      setState(() => adding = false);
+      if (mounted) setState(() => adding = false);
     }
+  }
+
+  void _showError(String message) {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message), backgroundColor: Colors.red),
+    );
+  }
+
+  void _showSuccess(String message) {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message), backgroundColor: AppColors.success),
+    );
   }
 
   @override
@@ -120,67 +78,23 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
         title: Text(widget.perfume.name),
         backgroundColor: AppColors.primary,
         foregroundColor: Colors.white,
-        elevation: 0,
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Hero(
-              tag: 'perfume-${widget.perfume.name}',
-              child: Container(
-                height: 400,
-                width: double.infinity,
-                color: Colors.white,
-                child: widget.perfume.imagePath != null
-                    ? Image.asset(
-                        'assets/images/perfumes/${widget.perfume.imagePath!.split('/').last}',
-                        fit: BoxFit.contain,
-                        errorBuilder: (context, error, stackTrace) {
-                          return const Icon(Icons.image_not_supported,
-                              size: 100, color: AppColors.textSecondary);
-                        },
-                      )
-                    : const Icon(Icons.image_not_supported,
-                        size: 100, color: AppColors.textSecondary),
-              ),
-            ),
+            _buildHeroImage(),
             Padding(
               padding: const EdgeInsets.all(AppSpacing.lg),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(widget.perfume.name, style: AppTextStyles.h1),
-                            const SizedBox(height: AppSpacing.xs),
-                            Text(widget.perfume.brand,
-                                style: AppTextStyles.h3.copyWith(
-                                    color: AppColors.textSecondary)),
-                          ],
-                        ),
-                      ),
-                      if (bestSellingNames.contains(widget.perfume.name))
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                          decoration: BoxDecoration(
-                            color: AppColors.bestSellerOrange,
-                            borderRadius: BorderRadius.circular(AppBorderRadius.sm),
-                          ),
-                          child: const Text(
-                            'BEST SELLER',
-                            style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                    ],
-                  ),
+                  _buildHeader(),
                   const SizedBox(height: AppSpacing.lg),
-                  Text('\$${widget.perfume.price.toStringAsFixed(2)}',
-                      style: AppTextStyles.h1.copyWith(color: AppColors.primary)),
+                  Text(
+                    '\$${widget.perfume.price.toStringAsFixed(2)}',
+                    style: AppTextStyles.h1.copyWith(color: AppColors.primary),
+                  ),
                   const SizedBox(height: AppSpacing.lg),
                   if (widget.perfume.description != null) ...[
                     Text('Description', style: AppTextStyles.h2),
@@ -199,34 +113,65 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        padding: const EdgeInsets.all(AppSpacing.md),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 10, offset: const Offset(0, -2))],
+      bottomNavigationBar: _buildAddToCartButton(),
+    );
+  }
+
+  Widget _buildHeroImage() {
+    return Hero(
+      tag: 'perfume-${widget.perfume.name}',
+      child: Container(
+        height: 400,
+        width: double.infinity,
+        color: Colors.white,
+        child: widget.perfume.imagePath != null
+            ? Image.asset(
+                'assets/images/perfumes/${widget.perfume.imagePath!.split('/').last}',
+                fit: BoxFit.contain,
+                errorBuilder: (_, __, ___) => const Icon(
+                  Icons.image_not_supported,
+                  size: 100,
+                  color: AppColors.textSecondary,
+                ),
+              )
+            : const Icon(Icons.image_not_supported, size: 100, color: AppColors.textSecondary),
+      ),
+    );
+  }
+
+  Widget _buildHeader() {
+    return Row(
+      children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(widget.perfume.name, style: AppTextStyles.h1),
+              const SizedBox(height: AppSpacing.xs),
+              Text(
+                widget.perfume.brand,
+                style: AppTextStyles.h3.copyWith(color: AppColors.textSecondary),
+              ),
+            ],
+          ),
         ),
-        child: SafeArea(
-          child: SizedBox(
-            height: 50,
-            child: ElevatedButton.icon(
-              onPressed: adding ? null : addToCart,
-              icon: adding
-                  ? const SizedBox(
-                      height: 20,
-                      width: 20,
-                      child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
-                    )
-                  : const Icon(Icons.shopping_cart),
-              label: Text(adding ? 'Adding...' : 'Add to Cart', style: AppTextStyles.button),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primary,
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppBorderRadius.md)),
+        if (bestSellingNames.contains(widget.perfume.name))
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            decoration: BoxDecoration(
+              color: AppColors.bestSellerOrange,
+              borderRadius: BorderRadius.circular(AppBorderRadius.sm),
+            ),
+            child: const Text(
+              'BEST SELLER',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
-        ),
-      ),
+      ],
     );
   }
 
@@ -237,24 +182,118 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
         Text(title, style: AppTextStyles.h3.copyWith(color: AppColors.primary)),
         const SizedBox(height: AppSpacing.sm),
         Wrap(
-          spacing: AppSpacing.sm,
-          runSpacing: AppSpacing.sm,
+          spacing: AppSpacing.md,
+          runSpacing: AppSpacing.md,
           children: notes.map((n) {
             final noteName = n.note?.name ?? 'Unknown';
             final notePhoto = n.note?.photo;
-            return Chip(
-              avatar: notePhoto != null
-                  ? CircleAvatar(
-                      backgroundImage: AssetImage('assets/images/notes/${notePhoto.split('/').last}'),
-                    )
-                  : const CircleAvatar(child: Icon(Icons.spa, size: 16)),
-              label: Text(noteName),
-              backgroundColor: AppColors.primary.withOpacity(0.1),
-            );
+            return _buildNoteCard(noteName, notePhoto);
           }).toList(),
         ),
-        const SizedBox(height: AppSpacing.md),
+        const SizedBox(height: AppSpacing.lg),
       ],
+    );
+  }
+
+  // Better looking note card - not too big, not too small
+  Widget _buildNoteCard(String noteName, String? notePhoto) {
+    return Container(
+      width: 100,
+      padding: const EdgeInsets.all(AppSpacing.sm),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(AppBorderRadius.md),
+        border: Border.all(color: AppColors.primary.withOpacity(0.2)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: AppColors.primary.withOpacity(0.1),
+              shape: BoxShape.circle,
+            ),
+            child: ClipOval(
+              child: notePhoto != null
+                  ? Image.asset(
+                      'assets/images/notes/${notePhoto.split('/').last}',
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) => const Icon(
+                        Icons.spa,
+                        size: 24,
+                        color: AppColors.primary,
+                      ),
+                    )
+                  : const Icon(
+                      Icons.spa,
+                      size: 24,
+                      color: AppColors.primary,
+                    ),
+            ),
+          ),
+          const SizedBox(height: AppSpacing.xs),
+          Text(
+            noteName,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildAddToCartButton() {
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 10,
+            offset: const Offset(0, -2),
+          )
+        ],
+      ),
+      child: SafeArea(
+        child: SizedBox(
+          height: 50,
+          child: ElevatedButton.icon(
+            onPressed: adding ? null : _addToCart,
+            icon: adding
+                ? const SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                      strokeWidth: 2,
+                    ),
+                  )
+                : const Icon(Icons.shopping_cart),
+            label: Text(
+              adding ? 'Adding...' : 'Add to Cart',
+              style: AppTextStyles.button,
+            ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.primary,
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppBorderRadius.md),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
