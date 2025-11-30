@@ -8,7 +8,7 @@ import qa.udst.perfume_shop.service.BrandService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/brands")
+@RequestMapping("/api/brands")
 @RequiredArgsConstructor
 public class BrandController {
 
