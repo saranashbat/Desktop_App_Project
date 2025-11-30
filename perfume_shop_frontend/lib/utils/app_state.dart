@@ -11,6 +11,13 @@ class AppState {
   User? currentUser;
   Cart? currentCart;
 
+  // Dark/light mode
+  bool isDarkMode = false;
+
+  void toggleDarkMode() {
+    isDarkMode = !isDarkMode;
+  }
+
   void setUser(User user) {
     currentUser = user;
   }

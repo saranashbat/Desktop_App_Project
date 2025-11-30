@@ -1,4 +1,3 @@
-// lib/widgets/app_drawer.dart
 import 'package:flutter/material.dart';
 import '../utils/app_state.dart';
 import '../utils/constants.dart';
@@ -21,16 +20,28 @@ class AppDrawer extends StatelessWidget {
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.white,
                 backgroundImage: user?.imagePath != null
-                    ? AssetImage(
-                        'assets/images/users/${user!.imagePath!.split('/').last}')
+                    ? AssetImage('assets/images/users/${user!.imagePath!.split('/').last}')
                     : null,
                 child: user?.imagePath == null
                     ? const Icon(Icons.person, size: 40, color: AppColors.primary)
                     : null,
               ),
-              accountName: Text(user?.username ?? 'Guest',
-                  style: const TextStyle(fontWeight: FontWeight.bold)),
+              accountName: Text(user?.username ?? 'Guest', style: const TextStyle(fontWeight: FontWeight.bold)),
               accountEmail: Text(user?.email ?? ''),
+              otherAccountsPictures: [
+                IconButton(
+                  icon: Icon(
+                    AppState().isDarkMode ? Icons.dark_mode : Icons.light_mode,
+                    color: Colors.white,
+                  ),
+                  tooltip: 'Toggle Dark/Light Mode',
+                  onPressed: () {
+                    AppState().toggleDarkMode();
+                    // Force rebuild
+                    (context as Element).markNeedsBuild();
+                  },
+                ),
+              ],
             ),
             ListTile(
               leading: const Icon(Icons.home, color: AppColors.primary),
@@ -55,10 +66,8 @@ class AppDrawer extends StatelessWidget {
                   ? CircleAvatar(
                       backgroundColor: AppColors.accent,
                       radius: 12,
-                      child: Text(
-                        '${AppState().cartItemCount}',
-                        style: const TextStyle(color: Colors.white, fontSize: 10),
-                      ),
+                      child: Text('${AppState().cartItemCount}',
+                          style: const TextStyle(color: Colors.white, fontSize: 10)),
                     )
                   : null,
               onTap: () {

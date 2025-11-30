@@ -199,8 +199,8 @@ class _PerfumeListScreenState extends State<PerfumeListScreen> {
                           itemCount: filteredPerfumes.length,
                           itemBuilder: (context, index) {
                             final perfume = filteredPerfumes[index];
-                            final isBestSeller = bestSellingIds
-                                .contains(perfume.id ?? '');
+                            final isBestSeller = bestSellingNames
+                                .contains(perfume.name);
                             return PerfumeCard(
                               perfume: perfume,
                               isBestSeller: isBestSeller,

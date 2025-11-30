@@ -164,7 +164,7 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
                           ],
                         ),
                       ),
-                      if (bestSellingIds.contains(widget.perfume.id ?? ''))
+                      if (bestSellingNames.contains(widget.perfume.name))
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                           decoration: BoxDecoration(

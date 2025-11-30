@@ -77,10 +77,10 @@ class AppBorderRadius {
   static const double lg = 16;
 }
 
-// Hardcoded best-selling perfume IDs
-const List<String> bestSellingIds = [
-  '692b379d2ed9ab2e8dd26565',
-  '692b379d2ed9ab2e8dd26573'
+// Hardcoded best-selling perfume names
+const List<String> bestSellingNames = [
+  'Lost Cherry',
+  'Capri in a Bottle Lemon Sugar 14'
 ];
 
 // Delivery fee constant
