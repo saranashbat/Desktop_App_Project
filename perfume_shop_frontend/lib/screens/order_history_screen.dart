@@ -76,10 +76,10 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
         .toList();
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.background, // ✅ Dynamic color
       appBar: AppBar(
         title: const Text('Order History'),
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.primary, // ✅ Dynamic color
         foregroundColor: Colors.white,
         elevation: 0,
       ),
@@ -91,10 +91,10 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(Icons.receipt_long_outlined,
+                      Icon(Icons.receipt_long_outlined, // ✅ Removed const
                           size: 100, color: AppColors.textSecondary),
                       const SizedBox(height: AppSpacing.lg),
-                      Text('No orders yet', style: AppTextStyles.h2),
+                      Text('No orders yet', style: AppTextStyles.h2), // ✅ Dynamic style
                       const SizedBox(height: AppSpacing.md),
                       ElevatedButton(
                         onPressed: () {
@@ -102,7 +102,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                               context, '/perfumes');
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.primary,
+                          backgroundColor: AppColors.primary, // ✅ Dynamic color
                           foregroundColor: Colors.white,
                         ),
                         child: const Text('Start Shopping'),
@@ -114,13 +114,13 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                   padding: const EdgeInsets.all(AppSpacing.md),
                   children: [
                     if (ongoingOrders.isNotEmpty) ...[
-                      Text('Ongoing Orders', style: AppTextStyles.h2),
+                      Text('Ongoing Orders', style: AppTextStyles.h2), // ✅ Dynamic style
                       const SizedBox(height: AppSpacing.md),
                       ...ongoingOrders.map((order) => _buildOrderCard(order)),
                       const SizedBox(height: AppSpacing.lg),
                     ],
                     if (pastOrders.isNotEmpty) ...[
-                      Text('Past Orders', style: AppTextStyles.h2),
+                      Text('Past Orders', style: AppTextStyles.h2), // ✅ Dynamic style
                       const SizedBox(height: AppSpacing.md),
                       ...pastOrders.map((order) => _buildOrderCard(order)),
                     ],
@@ -156,7 +156,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
         ),
         title: Text(
           'Order - ${order.createdAt.toString().split(' ')[0]}',
-          style: AppTextStyles.h3,
+          style: AppTextStyles.h3, // ✅ Dynamic style
         ),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -173,7 +173,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
         ),
         trailing: Text(
           '\$${order.total.toStringAsFixed(2)}',
-          style: AppTextStyles.price,
+          style: AppTextStyles.price, // ✅ Dynamic style
         ),
         children: [
           Padding(
@@ -182,7 +182,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Divider(),
-                Text('Items:', style: AppTextStyles.h3),
+                Text('Items:', style: AppTextStyles.h3), // ✅ Dynamic style
                 const SizedBox(height: AppSpacing.sm),
                 ...order.items.map((item) => Padding(
                       padding: const EdgeInsets.only(bottom: AppSpacing.xs),
@@ -200,7 +200,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Subtotal:', style: AppTextStyles.body),
+                    Text('Subtotal:', style: AppTextStyles.body), // ✅ Dynamic style
                     Text('\$${order.subtotal.toStringAsFixed(2)}'),
                   ],
                 ),
@@ -208,7 +208,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Delivery Fee:', style: AppTextStyles.body),
+                    Text('Delivery Fee:', style: AppTextStyles.body), // ✅ Dynamic style
                     Text('\$${order.deliveryFee.toStringAsFixed(2)}'),
                   ],
                 ),
@@ -216,25 +216,25 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Total:', style: AppTextStyles.h3),
+                    Text('Total:', style: AppTextStyles.h3), // ✅ Dynamic style
                     Text('\$${order.total.toStringAsFixed(2)}',
-                        style: AppTextStyles.price),
+                        style: AppTextStyles.price), // ✅ Dynamic style
                   ],
                 ),
                 const SizedBox(height: AppSpacing.md),
                 Text('Delivery Method:',
-                    style: AppTextStyles.bodySecondary),
+                    style: AppTextStyles.bodySecondary), // ✅ Dynamic style
                 Text(
                   order.deliveryMethod == 'shipping'
                       ? 'Shipping to: ${order.deliveryAddress}'
                       : 'Pickup at: ${order.pickupLocation}',
-                  style: AppTextStyles.body,
+                  style: AppTextStyles.body, // ✅ Dynamic style
                 ),
                 const SizedBox(height: AppSpacing.sm),
-                Text('Payment:', style: AppTextStyles.bodySecondary),
+                Text('Payment:', style: AppTextStyles.bodySecondary), // ✅ Dynamic style
                 Text(
                   '${order.paymentMethod.name} - ${order.paymentStatus}',
-                  style: AppTextStyles.body,
+                  style: AppTextStyles.body, // ✅ Dynamic style
                 ),
               ],
             ),

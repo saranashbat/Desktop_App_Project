@@ -43,10 +43,10 @@ class _BrandListScreenState extends State<BrandListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.background, // ✅ Dynamic color
       appBar: AppBar(
         title: const Text('Luxury Brands'),
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.primary, // ✅ Dynamic color
         foregroundColor: Colors.white,
         elevation: 0,
       ),
@@ -58,11 +58,11 @@ class _BrandListScreenState extends State<BrandListScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(Icons.business_outlined,
+                      Icon(Icons.business_outlined, // ✅ Removed const
                           size: 64, color: AppColors.textSecondary),
                       const SizedBox(height: AppSpacing.md),
                       Text('No brands available',
-                          style: AppTextStyles.h3),
+                          style: AppTextStyles.h3), // ✅ Dynamic style
                     ],
                   ),
                 )
@@ -100,12 +100,12 @@ class _BrandListScreenState extends State<BrandListScreen> {
                                 'assets/images/brands/${brand.logoPath!.split('/').last}',
                                 height: 60,
                                 errorBuilder: (context, error, stackTrace) {
-                                  return const Icon(Icons.business,
+                                  return Icon(Icons.business, // ✅ Removed const
                                       size: 60, color: AppColors.primary);
                                 },
                               )
                             else
-                              const Icon(Icons.business,
+                              Icon(Icons.business, // ✅ Removed const
                                   size: 60, color: AppColors.primary),
                             const SizedBox(height: AppSpacing.md),
                             Padding(
@@ -113,7 +113,7 @@ class _BrandListScreenState extends State<BrandListScreen> {
                                   horizontal: AppSpacing.sm),
                               child: Text(
                                 brand.name,
-                                style: AppTextStyles.h3,
+                                style: AppTextStyles.h3, // ✅ Dynamic style
                                 textAlign: TextAlign.center,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
@@ -126,7 +126,7 @@ class _BrandListScreenState extends State<BrandListScreen> {
                                     horizontal: AppSpacing.sm),
                                 child: Text(
                                   brand.description!,
-                                  style: AppTextStyles.caption,
+                                  style: AppTextStyles.caption, // ✅ Dynamic style
                                   textAlign: TextAlign.center,
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,

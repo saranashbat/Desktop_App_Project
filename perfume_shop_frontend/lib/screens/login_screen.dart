@@ -60,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.background, // ✅ Dynamic color
       body: Center(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(AppSpacing.xl),
@@ -77,20 +77,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 140,
                       width: 140,
                       decoration: BoxDecoration(
-                        color: AppColors.primary.withOpacity(0.1),
+                        color: AppColors.primary.withOpacity(0.1), // ✅ Dynamic color
                         shape: BoxShape.circle,
                       ),
-                      child: const Icon(Icons.shopping_bag,
+                      child: Icon(Icons.shopping_bag, // ✅ Removed const
                           size: 60, color: AppColors.primary),
                     );
                   },
                 ),
               ),
               const SizedBox(height: AppSpacing.xl),
-              Text('Welcome Back', style: AppTextStyles.h1),
+              Text('Welcome Back', style: AppTextStyles.h1), // ✅ Dynamic style
               const SizedBox(height: AppSpacing.sm),
               Text('Sign in to continue',
-                  style: AppTextStyles.bodySecondary),
+                  style: AppTextStyles.bodySecondary), // ✅ Dynamic style
               const SizedBox(height: AppSpacing.xl),
               TextField(
                 controller: emailController,
@@ -102,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius: BorderRadius.circular(AppBorderRadius.md),
                   ),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: AppColors.cardBackground, // ✅ Dynamic color (changed from Colors.white)
                 ),
               ),
               const SizedBox(height: AppSpacing.md),
@@ -126,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius: BorderRadius.circular(AppBorderRadius.md),
                   ),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: AppColors.cardBackground, // ✅ Dynamic color (changed from Colors.white)
                 ),
               ),
               const SizedBox(height: AppSpacing.xl),
@@ -136,7 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: ElevatedButton(
                   onPressed: loading ? null : login,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primary,
+                    backgroundColor: AppColors.primary, // ✅ Dynamic color
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(AppBorderRadius.md),
@@ -165,11 +165,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   child: Row(
                     children: [
-                      const Icon(Icons.error_outline, color: AppColors.error),
+                      Icon(Icons.error_outline, color: AppColors.error), // ✅ Removed const
                       const SizedBox(width: AppSpacing.sm),
                       Expanded(
                         child: Text(error!,
-                            style: const TextStyle(color: AppColors.error)),
+                            style: TextStyle(color: AppColors.error)), // ✅ Removed const
                       ),
                     ],
                   ),

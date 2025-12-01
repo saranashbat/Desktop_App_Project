@@ -24,7 +24,7 @@ class PerfumeCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppBorderRadius.md),
         ),
-        color: AppColors.cardBackground,
+        color: AppColors.cardBackground, // ✅ Dynamic color
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -43,15 +43,15 @@ class PerfumeCard extends StatelessWidget {
                             fit: BoxFit.cover,
                             errorBuilder: (context, error, stackTrace) {
                               return Container(
-                                color: AppColors.divider,
-                                child: const Icon(Icons.image_not_supported,
+                                color: AppColors.divider, // ✅ Dynamic color
+                                child: Icon(Icons.image_not_supported, // ✅ Removed const
                                     size: 48, color: AppColors.textSecondary),
                               );
                             },
                           )
                         : Container(
-                            color: AppColors.divider,
-                            child: const Icon(Icons.image_not_supported,
+                            color: AppColors.divider, // ✅ Dynamic color
+                            child: Icon(Icons.image_not_supported, // ✅ Removed const
                                 size: 48, color: AppColors.textSecondary),
                           ),
                   ),
@@ -89,21 +89,21 @@ class PerfumeCard extends StatelessWidget {
                 children: [
                   Text(
                     perfume.name,
-                    style: AppTextStyles.h3,
+                    style: AppTextStyles.h3, // ✅ Dynamic style
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: AppSpacing.xs),
                   Text(
                     perfume.brand,
-                    style: AppTextStyles.caption,
+                    style: AppTextStyles.caption, // ✅ Dynamic style
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: AppSpacing.xs),
                   Text(
                     '\$${perfume.price.toStringAsFixed(2)}',
-                    style: AppTextStyles.price,
+                    style: AppTextStyles.price, // ✅ Dynamic style
                   ),
                 ],
               ),

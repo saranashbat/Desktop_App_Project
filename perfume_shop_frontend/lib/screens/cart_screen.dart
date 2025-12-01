@@ -23,8 +23,8 @@ class _CartScreenState extends State<CartScreen> {
     super.initState();
     loadCart();
 
-    // TEMP: fake user for testing (remove when auth is ready)
-    if (AppState().currentUser == null) {
+    /* TEMP: fake user for testing (remove when auth is ready)
+    
       AppState().setUser(User(
         id: 'test123',
         username: 'Test User',
@@ -32,7 +32,7 @@ class _CartScreenState extends State<CartScreen> {
         imagePath: null,
         passwordHash: "hi",
       ));
-    }
+    */
   }
 
   Future<void> loadCart() async {
@@ -110,7 +110,7 @@ class _CartScreenState extends State<CartScreen> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
+          SnackBar( // ✅ Removed const
             content: Text('Item removed from cart'),
             backgroundColor: AppColors.warning,
           ),
@@ -138,10 +138,10 @@ class _CartScreenState extends State<CartScreen> {
 
     if (cart == null || cart.items.isEmpty) {
       return Scaffold(
-        backgroundColor: AppColors.background,
+        backgroundColor: AppColors.background, // ✅ Dynamic color
         appBar: AppBar(
           title: const Text('Shopping Cart'),
-          backgroundColor: AppColors.primary,
+          backgroundColor: AppColors.primary, // ✅ Dynamic color
           foregroundColor: Colors.white,
           elevation: 0,
         ),
@@ -150,17 +150,17 @@ class _CartScreenState extends State<CartScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.shopping_cart_outlined,
+              Icon(Icons.shopping_cart_outlined, // ✅ Removed const
                   size: 100, color: AppColors.textSecondary),
               const SizedBox(height: AppSpacing.lg),
-              Text('Your cart is empty', style: AppTextStyles.h2),
+              Text('Your cart is empty', style: AppTextStyles.h2), // ✅ Dynamic style
               const SizedBox(height: AppSpacing.md),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, '/perfumes');
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primary,
+                  backgroundColor: AppColors.primary, // ✅ Dynamic color
                   foregroundColor: Colors.white,
                 ),
                 child: const Text('Start Shopping'),
@@ -173,10 +173,10 @@ class _CartScreenState extends State<CartScreen> {
 
     // Safe: cart is non-null and has items
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.background, // ✅ Dynamic color
       appBar: AppBar(
         title: const Text('Shopping Cart'),
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.primary, // ✅ Dynamic color
         foregroundColor: Colors.white,
         elevation: 0,
       ),
@@ -201,7 +201,7 @@ class _CartScreenState extends State<CartScreen> {
           Container(
             padding: const EdgeInsets.all(AppSpacing.lg),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColors.cardBackground, // ✅ Dynamic color (changed from Colors.white)
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.1),
@@ -216,28 +216,28 @@ class _CartScreenState extends State<CartScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Subtotal:', style: AppTextStyles.body),
+                      Text('Subtotal:', style: AppTextStyles.body), // ✅ Dynamic style
                       Text('\$${cart.subtotal.toStringAsFixed(2)}',
-                          style: AppTextStyles.h3),
+                          style: AppTextStyles.h3), // ✅ Dynamic style
                     ],
                   ),
                   const SizedBox(height: AppSpacing.sm),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Delivery Fee:', style: AppTextStyles.body),
+                      Text('Delivery Fee:', style: AppTextStyles.body), // ✅ Dynamic style
                       Text('\$${cart.deliveryFee.toStringAsFixed(2)}',
-                          style: AppTextStyles.h3),
+                          style: AppTextStyles.h3), // ✅ Dynamic style
                     ],
                   ),
                   const Divider(height: AppSpacing.lg),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Total:', style: AppTextStyles.h2),
+                      Text('Total:', style: AppTextStyles.h2), // ✅ Dynamic style
                       Text('\$${cart.total.toStringAsFixed(2)}',
                           style: AppTextStyles.h1
-                              .copyWith(color: AppColors.primary)),
+                              .copyWith(color: AppColors.primary)), // ✅ Dynamic style
                     ],
                   ),
                   const SizedBox(height: AppSpacing.md),
@@ -249,7 +249,7 @@ class _CartScreenState extends State<CartScreen> {
                         Navigator.pushNamed(context, '/checkout');
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primary,
+                        backgroundColor: AppColors.primary, // ✅ Dynamic color
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius:

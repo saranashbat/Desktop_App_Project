@@ -91,10 +91,10 @@ class _BrandPerfumesScreenState extends State<BrandPerfumesScreen> {
         .toList();
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.background, // ✅ Dynamic color
       appBar: AppBar(
         title: Text(widget.brand.name),
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.primary, // ✅ Dynamic color
         foregroundColor: Colors.white,
         elevation: 0,
       ),
@@ -103,14 +103,14 @@ class _BrandPerfumesScreenState extends State<BrandPerfumesScreen> {
           : Column(
               children: [
                 Container(
-                  color: Colors.white,
+                  color: AppColors.cardBackground, // ✅ Dynamic color (changed from Colors.white)
                   padding: const EdgeInsets.all(AppSpacing.md),
                   child: Column(
                     children: [
                       if (widget.brand.description != null) ...[
                         Text(
                           widget.brand.description!,
-                          style: AppTextStyles.bodySecondary,
+                          style: AppTextStyles.bodySecondary, // ✅ Dynamic style
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: AppSpacing.md),
@@ -134,7 +134,7 @@ class _BrandPerfumesScreenState extends State<BrandPerfumesScreen> {
                             child: OutlinedButton(
                               onPressed: resetFilters,
                               style: OutlinedButton.styleFrom(
-                                foregroundColor: AppColors.primary,
+                                foregroundColor: AppColors.primary, // ✅ Dynamic color
                               ),
                               child: const Text('Reset'),
                             ),
@@ -154,7 +154,7 @@ class _BrandPerfumesScreenState extends State<BrandPerfumesScreen> {
                             ? 'Price: Low to High'
                             : 'Price: High to Low'),
                         style: OutlinedButton.styleFrom(
-                          foregroundColor: AppColors.primary,
+                          foregroundColor: AppColors.primary, // ✅ Dynamic color
                         ),
                       ),
                     ],
@@ -166,11 +166,11 @@ class _BrandPerfumesScreenState extends State<BrandPerfumesScreen> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Icon(Icons.search_off,
+                              Icon(Icons.search_off, // ✅ Removed const
                                   size: 64, color: AppColors.textSecondary),
                               const SizedBox(height: AppSpacing.md),
                               Text('No perfumes found',
-                                  style: AppTextStyles.h3),
+                                  style: AppTextStyles.h3), // ✅ Dynamic style
                             ],
                           ),
                         )

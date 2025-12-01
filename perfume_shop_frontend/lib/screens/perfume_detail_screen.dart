@@ -5,6 +5,7 @@ import '../models/cart_item.dart';
 import '../services/cart_service.dart';
 import '../utils/app_state.dart';
 import '../utils/constants.dart';
+import '../models/user.dart';
 
 class PerfumeDetailScreen extends StatefulWidget {
   final Perfume perfume;
@@ -20,7 +21,9 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
   final CartService _cartService = CartService();
 
   Future<void> _addToCart() async {
+    
     final user = AppState().currentUser;
+    
 
     if (user == null || user.id == null) {
       _showError('Please login first');
@@ -73,10 +76,10 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
     final baseNotes = widget.perfume.notes.where((n) => n.type == 'BASE').toList();
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.background, // ✅ Dynamic color
       appBar: AppBar(
         title: Text(widget.perfume.name),
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.primary, // ✅ Dynamic color
         foregroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
@@ -93,16 +96,16 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
                   const SizedBox(height: AppSpacing.lg),
                   Text(
                     '\$${widget.perfume.price.toStringAsFixed(2)}',
-                    style: AppTextStyles.h1.copyWith(color: AppColors.primary),
+                    style: AppTextStyles.h1.copyWith(color: AppColors.primary), // ✅ Dynamic style
                   ),
                   const SizedBox(height: AppSpacing.lg),
                   if (widget.perfume.description != null) ...[
-                    Text('Description', style: AppTextStyles.h2),
+                    Text('Description', style: AppTextStyles.h2), // ✅ Dynamic style
                     const SizedBox(height: AppSpacing.sm),
-                    Text(widget.perfume.description!, style: AppTextStyles.body),
+                    Text(widget.perfume.description!, style: AppTextStyles.body), // ✅ Dynamic style
                     const SizedBox(height: AppSpacing.lg),
                   ],
-                  Text('Fragrance Notes', style: AppTextStyles.h2),
+                  Text('Fragrance Notes', style: AppTextStyles.h2), // ✅ Dynamic style
                   const SizedBox(height: AppSpacing.md),
                   if (topNotes.isNotEmpty) _buildNoteSection('Top Notes', topNotes),
                   if (middleNotes.isNotEmpty) _buildNoteSection('Middle Notes', middleNotes),
@@ -123,18 +126,18 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
       child: Container(
         height: 400,
         width: double.infinity,
-        color: Colors.white,
+        color: AppColors.cardBackground, // ✅ Dynamic color (changed from Colors.white)
         child: widget.perfume.imagePath != null
             ? Image.asset(
                 'assets/images/perfumes/${widget.perfume.imagePath!.split('/').last}',
                 fit: BoxFit.contain,
-                errorBuilder: (_, __, ___) => const Icon(
+                errorBuilder: (_, __, ___) => Icon( // ✅ Removed const
                   Icons.image_not_supported,
                   size: 100,
                   color: AppColors.textSecondary,
                 ),
               )
-            : const Icon(Icons.image_not_supported, size: 100, color: AppColors.textSecondary),
+            : Icon(Icons.image_not_supported, size: 100, color: AppColors.textSecondary), // ✅ Removed const
       ),
     );
   }
@@ -146,11 +149,11 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(widget.perfume.name, style: AppTextStyles.h1),
+              Text(widget.perfume.name, style: AppTextStyles.h1), // ✅ Dynamic style
               const SizedBox(height: AppSpacing.xs),
               Text(
                 widget.perfume.brand,
-                style: AppTextStyles.h3.copyWith(color: AppColors.textSecondary),
+                style: AppTextStyles.h3.copyWith(color: AppColors.textSecondary), // ✅ Dynamic style
               ),
             ],
           ),
@@ -179,7 +182,7 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title, style: AppTextStyles.h3.copyWith(color: AppColors.primary)),
+        Text(title, style: AppTextStyles.h3.copyWith(color: AppColors.primary)), // ✅ Dynamic style
         const SizedBox(height: AppSpacing.sm),
         Wrap(
           spacing: AppSpacing.md,
@@ -195,15 +198,14 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
     );
   }
 
-  // Better looking note card - not too big, not too small
   Widget _buildNoteCard(String noteName, String? notePhoto) {
     return Container(
       width: 100,
       padding: const EdgeInsets.all(AppSpacing.sm),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.cardBackground, // ✅ Dynamic color (changed from Colors.white)
         borderRadius: BorderRadius.circular(AppBorderRadius.md),
-        border: Border.all(color: AppColors.primary.withOpacity(0.2)),
+        border: Border.all(color: AppColors.primary.withOpacity(0.2)), // ✅ Dynamic color
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
@@ -218,7 +220,7 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
             width: 50,
             height: 50,
             decoration: BoxDecoration(
-              color: AppColors.primary.withOpacity(0.1),
+              color: AppColors.primary.withOpacity(0.1), // ✅ Dynamic color
               shape: BoxShape.circle,
             ),
             child: ClipOval(
@@ -226,13 +228,13 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
                   ? Image.asset(
                       'assets/images/notes/${notePhoto.split('/').last}',
                       fit: BoxFit.cover,
-                      errorBuilder: (_, __, ___) => const Icon(
+                      errorBuilder: (_, __, ___) => Icon( // ✅ Removed const
                         Icons.spa,
                         size: 24,
                         color: AppColors.primary,
                       ),
                     )
-                  : const Icon(
+                  : Icon( // ✅ Removed const
                       Icons.spa,
                       size: 24,
                       color: AppColors.primary,
@@ -243,7 +245,10 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
           Text(
             noteName,
             textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+            style: AppTextStyles.caption.copyWith( // ✅ Dynamic style
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
+            ),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
@@ -256,7 +261,7 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
     return Container(
       padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.cardBackground, // ✅ Dynamic color (changed from Colors.white)
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
@@ -285,7 +290,7 @@ class _PerfumeDetailScreenState extends State<PerfumeDetailScreen> {
               style: AppTextStyles.button,
             ),
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primary,
+              backgroundColor: AppColors.primary, // ✅ Dynamic color
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(AppBorderRadius.md),

@@ -2,6 +2,8 @@
 import '../models/user.dart';
 import '../models/cart.dart';
 import '../models/cart_item.dart';
+import '../main.dart';
+import '../config/theme_config.dart';
 
 class AppState {
   static final AppState _instance = AppState._internal();
@@ -13,9 +15,13 @@ class AppState {
 
   // Dark/light mode
   bool isDarkMode = false;
+  Function()? onThemeChanged;
 
+ // ✅ Toggle dark mode
   void toggleDarkMode() {
     isDarkMode = !isDarkMode;
+    ThemeConfig.isDarkMode = isDarkMode;
+    onThemeChanged?.call();
   }
 
   void setUser(User user) {

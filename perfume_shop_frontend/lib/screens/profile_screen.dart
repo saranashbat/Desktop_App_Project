@@ -15,7 +15,7 @@ class ProfileScreen extends StatelessWidget {
       return Scaffold(
         appBar: AppBar(
           title: const Text('Profile'),
-          backgroundColor: AppColors.primary,
+          backgroundColor: AppColors.primary, // ✅ Dynamic color
           foregroundColor: Colors.white,
         ),
         body: const Center(
@@ -25,10 +25,10 @@ class ProfileScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.background, // ✅ Dynamic color
       appBar: AppBar(
         title: const Text('Profile'),
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.primary, // ✅ Dynamic color
         foregroundColor: Colors.white,
         elevation: 0,
       ),
@@ -39,9 +39,9 @@ class ProfileScreen extends StatelessWidget {
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(AppSpacing.xl),
-              decoration: const BoxDecoration(
-                color: AppColors.primary,
-                borderRadius: BorderRadius.only(
+              decoration: BoxDecoration( // ✅ Removed const
+                color: AppColors.primary, // ✅ Dynamic color
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(AppBorderRadius.lg),
                   bottomRight: Radius.circular(AppBorderRadius.lg),
                 ),
@@ -56,19 +56,19 @@ class ProfileScreen extends StatelessWidget {
                             'assets/images/users/${user.imagePath!.split('/').last}')
                         : null,
                     child: user.imagePath == null
-                        ? const Icon(Icons.person,
+                        ? Icon(Icons.person, // ✅ Removed const
                             size: 60, color: AppColors.primary)
                         : null,
                   ),
                   const SizedBox(height: AppSpacing.md),
                   Text(
                     user.username,
-                    style: AppTextStyles.h1.copyWith(color: Colors.white),
+                    style: AppTextStyles.h1.copyWith(color: Colors.white), // ✅ Dynamic style
                   ),
                   const SizedBox(height: AppSpacing.xs),
                   Text(
                     user.email,
-                    style: AppTextStyles.body.copyWith(color: Colors.white70),
+                    style: AppTextStyles.body.copyWith(color: Colors.white70), // ✅ Dynamic style
                   ),
                 ],
               ),
@@ -160,8 +160,10 @@ class ProfileScreen extends StatelessWidget {
     required String title,
     required String subtitle,
     required VoidCallback onTap,
-    Color iconColor = AppColors.primary,
+    Color? iconColor, // ✅ Changed to nullable
   }) {
+    final color = iconColor ?? AppColors.primary; // ✅ Use dynamic default
+    
     return Card(
       margin: const EdgeInsets.only(bottom: AppSpacing.md),
       elevation: 1,
@@ -172,15 +174,15 @@ class ProfileScreen extends StatelessWidget {
         leading: Container(
           padding: const EdgeInsets.all(AppSpacing.sm),
           decoration: BoxDecoration(
-            color: iconColor.withOpacity(0.1),
+            color: color.withOpacity(0.1),
             borderRadius: BorderRadius.circular(AppBorderRadius.sm),
           ),
-          child: Icon(icon, color: iconColor),
+          child: Icon(icon, color: color),
         ),
-        title: Text(title, style: AppTextStyles.h3),
-        subtitle: Text(subtitle, style: AppTextStyles.caption),
-        trailing:
-            const Icon(Icons.arrow_forward_ios, size: 16, color: AppColors.textSecondary),
+        title: Text(title, style: AppTextStyles.h3), // ✅ Dynamic style
+        subtitle: Text(subtitle, style: AppTextStyles.caption), // ✅ Dynamic style
+        trailing: Icon(Icons.arrow_forward_ios, // ✅ Removed const
+            size: 16, color: AppColors.textSecondary),
         onTap: onTap,
       ),
     );
